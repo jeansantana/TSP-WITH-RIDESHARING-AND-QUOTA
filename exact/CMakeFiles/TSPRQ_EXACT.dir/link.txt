@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11 -O3   CMakeFiles/TSPRQ_EXACT.dir/TSPRQ_EXACT.cpp.o  -o TSPRQ_EXACT  -L/home/jeansilva/gurobi652/linux64/lib /home/jeansilva/gurobi652/linux64/lib/libgurobi_c++.a -lgurobi65 -Wl,-rpath,/home/jeansilva/gurobi652/linux64/lib 

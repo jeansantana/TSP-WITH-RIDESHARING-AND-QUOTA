@@ -7,17 +7,17 @@ using namespace std;
 
 #define FORR(i, a, b) for (int i = a; i < b; ++i)
 #define FOR(i, a) FORR(i, 0, a)
-
-double d[1000][1000];//Matriz de custos
-double T[1000];//Tarifa máxima por passageiro
-//ii E[1000];//Vértice de embarque e desembarque respectvamente
-int E[1000];//Vértice de embarque (posição) e desembarque (conteúdo)
-int min_bonus;
-int qtd_bonus;
-int bonus[1000];
+#define pb push_back
 
 typedef pair<int, int> ii;
 typedef vector<int> vi;
+
+double d[1000][1000]; // Cost matrix
+double T[1000]; // passenger's minimum fare
+int E[1000]; // Embarking vertice (postion) and disembarkation (list content)
+int min_bonus; // minimum bonus quota
+int bonus[1000]; // bonus list
+int start = 0; // start vertex
 
 GRBEnv env = GRBEnv();
 GRBModel model = GRBModel(env);
@@ -25,8 +25,6 @@ GRBModel model = GRBModel(env);
 void terminate(int) { 
 	model.terminate();
 }
-
-#define pb push_back
 
 class mycallback: public GRBCallback {
 
@@ -40,7 +38,8 @@ class mycallback: public GRBCallback {
 int main(int argc, char const *argv[]) {
 
 	std::signal(SIGALRM, terminate);
-    alarm(10);
+    alarm(800000);
+    // alarm(300);
 
 	int n, p, r;
 
@@ -75,6 +74,9 @@ int main(int argc, char const *argv[]) {
 		cin >> vertice >> bonus_value;
 		bonus[vertice] = bonus_value;
 	}
+
+	// start city
+	bonus[start] = 0;
 	
 	try {
     	// definindo as vars
@@ -82,6 +84,7 @@ int main(int argc, char const *argv[]) {
 		GRBVar x[n][n]; //x_{ij}
 		GRBVar v[p][n][n]; //v^l_{ij}
 		GRBVar u[n];
+		GRBVar e[p][n]; // var to control the embark of the passenger l in vertice i
 		// lienarização da restrição da tarifa
 		// GRBVar w[n][n]; // continua [0, 1]
 		// GRBVar g[n][n]; // continua [0, 1] 
@@ -96,6 +99,12 @@ int main(int argc, char const *argv[]) {
 		
 		FORR(i, 1, n) {
 			u[i] = model.addVar(0.0, n-2, 0.0, GRB_INTEGER, "u_" + to_string(i));
+		}
+
+		FOR(l, p) {
+			FOR(i, n) {
+				e[l][i] = model.addVar(0.0, 1.0, 0.0, GRB_BINARY, "e_" + to_string(l) + to_string(i));
+			}
 		}
 
 		FOR(i, n) {
@@ -277,6 +286,18 @@ int main(int argc, char const *argv[]) {
 	 		e1 = e2 = 0;
 	 	}
 
+	 	// embark constraint
+	 	FOR (l, p) {
+	 		GRBLinExpr exp = 0;
+	 		FOR (i, n) {
+	 			FOR (j, n) {
+	 				if (i != j)
+	 					exp+= v[l][i][j];
+	 			}
+	 			model.addConstr(e[l][i] - exp == 0, "c13_" + to_string(l) + to_string(i));
+	 			exp = 0;
+	 		}
+	 	}
 
 	 	// e1 = e2 = 0;
 
@@ -334,30 +355,21 @@ int main(int argc, char const *argv[]) {
 	 		}
 	 		cout << endl;
 	 	}*/
-	 	vi path;
-	 	ii start(0, 0);
 
-	 	do {
-	 		FOR (j, n) {
-	 			if ( start.second != j && x[start.second][j].get(GRB_DoubleAttr_X) == 1 ) {
-
-	 				// cout << start.first << "," << start.second << endl;
-	 				path.pb(start.second);
-	 				start.first = start.second;
-	 				start.second = j;
-	 				break;
-
-	 			}
-	 		}
-	 	} while ( start.second != 0 );
+	 	vi path(n, 0);
+	 	//path[0] = 0;
+	 	// ii start(0, 0);
+	 	FORR(i, 1, n)
+	 		path[ ((int) u[i].get(GRB_DoubleAttr_X)) + 1] = i;
 
 	 	cout << "\nSolution:\n";
 
-	 	FOR (i, path.size()) {
-	 		cout << path[i] << " ";
+	 	cout << "0 ";
+	 	FORR (i, 1, path.size()) {
+ 			if ( path[i] != 0 ) cout << path[i] << " ";
 	 	}
 	 	cout << endl;
-
+		
 	 	vi emb;
 	 	emb.assign(n, 0);
 	 	// cout << emb.size() << endl;
@@ -366,15 +378,16 @@ int main(int argc, char const *argv[]) {
 	    FOR(i, n) {
 	        FOR(j, n) {
 	            FOR(l, p) {
-	                if (i != j && v[l][i][j].get(GRB_DoubleAttr_X) == 1) {
+	                if ( i != j && v[l][i][j].get(GRB_DoubleAttr_X) == 1 ) {
 	                	emb[ path[l] ] = 1;
 	                }
 	            }
 	        }
 	    }
     	
+    	cout << emb[0] << " ";
     	FOR(i, path.size()) {
-    		cout << emb[i] << " ";
+    		if ( path[i] != 0 ) cout << emb[i] << " ";
     	}
     	cout << endl;
 
