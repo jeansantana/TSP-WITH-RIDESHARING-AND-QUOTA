@@ -4,7 +4,7 @@
 
 ### Instructions
 
-This project uses gurobi version 65, so the cmake files uses this version. If you want to use another version you must to change each `CMakeLists.txt` file on the folders, for instance: `exact/CMakeLists.txt`.
+This project uses gurobi version 6.5, so the cmake files uses this version. If you want to use another version you must to change each `CMakeLists.txt` file on the folders, for instance: `exact/CMakeLists.txt`.
 
 To run the code, you have to run the command `cmake .` on the folder that contains the 
 `CMakeLists.txt` file.
