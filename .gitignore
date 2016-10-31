@@ -100,3 +100,9 @@ Makefile
 cmake_install.cmake
 install_manifest.txt
 CTestTestfile.cmake
+
+# For project files
+# for visual code
+.vscode
+# for JETBRAINS IDE
+.idea
