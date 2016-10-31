@@ -1,3 +1,0 @@
-/home/jeansilva/Dropbox/Mestrado/TSP-WITH-RIDESHARING-AND-QUOTA/exact/CMakeFiles/edit_cache.dir
-/home/jeansilva/Dropbox/Mestrado/TSP-WITH-RIDESHARING-AND-QUOTA/exact/CMakeFiles/rebuild_cache.dir
-/home/jeansilva/Dropbox/Mestrado/TSP-WITH-RIDESHARING-AND-QUOTA/exact/CMakeFiles/TSPRQ_EXACT.dir

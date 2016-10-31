@@ -1,0 +1,15 @@
+NAME : TIC01-20-20-3.1491.tour
+COMMENT : Length = 1491
+COMMENT : Found by LKH [Keld Helsgaun] Mon Oct 31 15:09:34 2016
+TYPE : TOUR
+DIMENSION : 7
+TOUR_SECTION
+1
+6
+5
+4
+3
+2
+7
+-1
+EOF

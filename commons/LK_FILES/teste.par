@@ -1,0 +1,3 @@
+PROBLEM_FILE = LK_FILES/teste.tsp
+RUNS = 10
+TOUR_FILE = LK_FILES/teste.tour

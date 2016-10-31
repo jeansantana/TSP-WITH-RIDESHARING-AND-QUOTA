@@ -376,28 +376,22 @@ int main(int argc, char const *argv[]) {
 		
 	 	vi emb;
 	 	emb.assign(n, 0);
-
-	 	// preprocessing on route
-
-	 	map<int, int> mapRoute;
-	 	FOR(i, n) {
-	 		mapRoute.insert( ii(path[i], i) );
-	 	}
+	 	// cout << emb.size() << endl;
 
 	 	//int c = 0;
-	    FOR(l, p) {
-	        FOR(i, n) {
-	            FOR(j, n) {
-	                if (i != j && v[l][i][j].get(GRB_DoubleAttr_X) == 1) {
-	                	// cout << l << "_" << i << "_" << j << endl;
-	                	emb[ mapRoute[l] ] = 1;
+	    FOR(i, n) {
+	        FOR(j, n) {
+	            FOR(l, p) {
+	                if ( i != j && v[l][i][j].get(GRB_DoubleAttr_X) == 1 ) {
+	                	emb[ path[l] ] = 1;
 	                }
 	            }
 	        }
 	    }
     	
+    	cout << emb[0] << " ";
     	FOR(i, path.size()) {
-    		cout << emb[i] << " ";
+    		if ( path[i] != 0 ) cout << emb[i] << " ";
     	}
     	cout << endl;
 
