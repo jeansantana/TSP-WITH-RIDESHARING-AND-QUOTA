@@ -369,8 +369,12 @@ int main(int argc, char const *argv[]) {
 	 	cout << "\nSolution:\n";
 
 	 	cout << "0 ";
+	 	int pathSize = 1;
 	 	FORR (i, 1, path.size()) {
- 			if ( path[i] != 0 ) cout << path[i] << " ";
+ 			if ( path[i] != 0 ) {
+ 				cout << path[i] << " ";
+ 				pathSize++;
+ 			}
 	 	}
 	 	cout << endl;
 		
@@ -396,7 +400,7 @@ int main(int argc, char const *argv[]) {
 	        }
 	    }
     	
-    	FOR(i, path.size()) {
+    	FOR(i, pathSize) {
     		cout << emb[i] << " ";
     	}
     	cout << endl;
