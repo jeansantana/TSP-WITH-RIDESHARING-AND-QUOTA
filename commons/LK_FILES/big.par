@@ -1,0 +1,3 @@
+PROBLEM_FILE = ../commons/LK_FILES/big.tsp
+RUNS = 10
+TOUR_FILE = ../commons/LK_FILES/big.tour

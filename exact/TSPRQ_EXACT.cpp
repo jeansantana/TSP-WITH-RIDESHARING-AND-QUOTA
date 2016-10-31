@@ -18,6 +18,7 @@ int E[1000]; // Embarking vertice (postion) and disembarkation (list content)
 int min_bonus; // minimum bonus quota
 int bonus[1000]; // bonus list
 int start = 0; // start vertex
+const int TIME_LIMIT = 80000;
 
 GRBEnv env = GRBEnv();
 GRBModel model = GRBModel(env);
@@ -38,8 +39,11 @@ class mycallback: public GRBCallback {
 int main(int argc, char const *argv[]) {
 
 	std::signal(SIGALRM, terminate);
-    alarm(800000);
-    // alarm(300);
+	// 80000 sec = 22,22 hours
+    alarm(TIME_LIMIT);
+
+	FILE * unused __attribute__((unused));
+	unused = freopen (argv[1], "r", stdin);
 
 	int n, p, r;
 
@@ -84,7 +88,7 @@ int main(int argc, char const *argv[]) {
 		GRBVar x[n][n]; //x_{ij}
 		GRBVar v[p][n][n]; //v^l_{ij}
 		GRBVar u[n];
-		GRBVar e[p][n]; // var to control the embark of the passenger l in vertice i
+		// GRBVar e[p][n]; // var to control the embark of the passenger l in vertice i
 		// lienarização da restrição da tarifa
 		// GRBVar w[n][n]; // continua [0, 1]
 		// GRBVar g[n][n]; // continua [0, 1] 
@@ -101,11 +105,11 @@ int main(int argc, char const *argv[]) {
 			u[i] = model.addVar(0.0, n-2, 0.0, GRB_INTEGER, "u_" + to_string(i));
 		}
 
-		FOR(l, p) {
+		/*FOR(l, p) {
 			FOR(i, n) {
 				e[l][i] = model.addVar(0.0, 1.0, 0.0, GRB_BINARY, "e_" + to_string(l) + to_string(i));
 			}
-		}
+		}*/
 
 		FOR(i, n) {
 			FOR(j, n) {
@@ -286,7 +290,7 @@ int main(int argc, char const *argv[]) {
 	 		e1 = e2 = 0;
 	 	}
 
-	 	// embark constraint
+	 	/*// embark constraint
 	 	FOR (l, p) {
 	 		GRBLinExpr exp = 0;
 	 		FOR (i, n) {
@@ -297,7 +301,7 @@ int main(int argc, char const *argv[]) {
 	 			model.addConstr(e[l][i] - exp == 0, "c13_" + to_string(l) + to_string(i));
 	 			exp = 0;
 	 		}
-	 	}
+	 	}*/
 
 	 	// e1 = e2 = 0;
 
@@ -372,22 +376,28 @@ int main(int argc, char const *argv[]) {
 		
 	 	vi emb;
 	 	emb.assign(n, 0);
-	 	// cout << emb.size() << endl;
+
+	 	// preprocessing on route
+
+	 	map<int, int> mapRoute;
+	 	FOR(i, n) {
+	 		mapRoute.insert( ii(path[i], i) );
+	 	}
 
 	 	//int c = 0;
-	    FOR(i, n) {
-	        FOR(j, n) {
-	            FOR(l, p) {
-	                if ( i != j && v[l][i][j].get(GRB_DoubleAttr_X) == 1 ) {
-	                	emb[ path[l] ] = 1;
+	    FOR(l, p) {
+	        FOR(i, n) {
+	            FOR(j, n) {
+	                if (i != j && v[l][i][j].get(GRB_DoubleAttr_X) == 1) {
+	                	// cout << l << "_" << i << "_" << j << endl;
+	                	emb[ mapRoute[l] ] = 1;
 	                }
 	            }
 	        }
 	    }
     	
-    	cout << emb[0] << " ";
     	FOR(i, path.size()) {
-    		if ( path[i] != 0 ) cout << emb[i] << " ";
+    		cout << emb[i] << " ";
     	}
     	cout << endl;
 

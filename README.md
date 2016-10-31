@@ -4,7 +4,7 @@
 
 ### 1. Exact
 
-	That algortim uses gurobi solver. The math model was implemented here.
+	That algorithm uses gurobi solver. The math model was implemented here.
     
 
-### 2. Heristic
+### 2. Heuristic

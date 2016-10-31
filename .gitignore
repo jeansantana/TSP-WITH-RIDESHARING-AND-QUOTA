@@ -88,3 +88,4 @@ dkms.conf
 *.exe
 *.out
 *.app
+*.run

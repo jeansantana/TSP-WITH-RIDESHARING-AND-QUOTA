@@ -1,0 +1,13 @@
+NAME : TIC16-10-10-4.1142.tour
+COMMENT : Length = 1142
+COMMENT : Found by LKH [Keld Helsgaun] Mon Oct 17 19:42:31 2016
+TYPE : TOUR
+DIMENSION : 5
+TOUR_SECTION
+1
+2
+5
+3
+4
+-1
+EOF

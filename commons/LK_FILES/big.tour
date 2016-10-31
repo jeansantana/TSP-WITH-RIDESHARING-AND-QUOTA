@@ -1,0 +1,12 @@
+NAME : big.20.tour
+COMMENT : Length = 20
+COMMENT : Found by LKH [Keld Helsgaun] Mon Oct 17 20:07:44 2016
+TYPE : TOUR
+DIMENSION : 4
+TOUR_SECTION
+1
+2
+3
+4
+-1
+EOF

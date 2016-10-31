@@ -4,7 +4,7 @@ project(TSPRQ_EXACT)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 
 set(SOURCE_FILES TSPRQ_EXACT.cpp)
-add_executable(TSPRQ_EXACT ${SOURCE_FILES})
+add_executable(TSPRQ_EXACT.run ${SOURCE_FILES})
 
 if (GUROBI_INCLUDE_DIR)
 # in cache already
@@ -54,5 +54,5 @@ set(GUROBI_LIBRARIES "${GUROBI_LIBRARY};${GUROBI_CXX_LIBRARY}" )
 endif(GUROBI_INCLUDE_DIR)
 
 include_directories(${GUROBI_INCLUDE_DIR})
-target_link_libraries(TSPRQ_EXACT ${GUROBI_CXX_LIBRARY})
-target_link_libraries(TSPRQ_EXACT ${GUROBI_LIBRARY})
+target_link_libraries(TSPRQ_EXACT.run ${GUROBI_CXX_LIBRARY})
+target_link_libraries(TSPRQ_EXACT.run ${GUROBI_LIBRARY})

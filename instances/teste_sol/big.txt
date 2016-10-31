@@ -1,0 +1,55 @@
+Optimize a model with 81 rows, 144 columns and 415 nonzeros
+Model has 20 quadratic objective terms
+Model has 25 quadratic constraints
+Coefficient statistics:
+  Matrix range    [1e+00, 7e+01]
+  Objective range [0e+00, 0e+00]
+  Bounds range    [1e+00, 3e+00]
+  RHS range       [1e+00, 1e+02]
+Presolve removed 27 rows and 59 columns
+Presolve time: 0.00s
+Presolved: 217 rows, 146 columns, 638 nonzeros
+Variable types: 73 continuous, 73 integer (65 binary)
+Found heuristic solution: objective 11.0000000
+
+Root relaxation: objective 4.000000e+00, 117 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0    4.00000    0   14   11.00000    4.00000  63.6%     -    0s
+H    0     0                      10.0000000    4.00000  60.0%     -    0s
+     0     0    4.00000    0   30   10.00000    4.00000  60.0%     -    0s
+     0     0    4.52564    0   24   10.00000    4.52564  54.7%     -    0s
+H    0     0                       8.5000000    4.52564  46.8%     -    0s
+H    0     0                       8.0000000    4.52564  43.4%     -    0s
+     0     0    4.88889    0   29    8.00000    4.88889  38.9%     -    0s
+     0     0    5.00000    0   39    8.00000    5.00000  37.5%     -    0s
+H    0     0                       7.5000000    5.00000  33.3%     -    0s
+H    0     0                       7.3333333    5.00000  31.8%     -    0s
+     0     0    5.02381    0   35    7.33333    5.02381  31.5%     -    0s
+     0     0    5.22000    0   27    7.33333    5.22000  28.8%     -    0s
+H    0     0                       6.6666667    5.22000  21.7%     -    0s
+     0     0    5.39545    0   37    6.66667    5.39545  19.1%     -    0s
+     0     0    5.68031    0   40    6.66667    5.68031  14.8%     -    0s
+     0     0    5.76000    0   43    6.66667    5.76000  13.6%     -    0s
+     0     0    5.90278    0   19    6.66667    5.90278  11.5%     -    0s
+H    0     0                       6.5000000    5.90278  9.19%     -    0s
+     0     0    5.90278    0   19    6.50000    5.90278  9.19%     -    0s
+     0     0    5.93333    0   34    6.50000    5.93333  8.72%     -    0s
+     0     0    6.03333    0   33    6.50000    6.03333  7.18%     -    0s
+     0     0    6.04365    0   36    6.50000    6.04365  7.02%     -    0s
+     0     0     cutoff    0         6.50000    6.50000  0.00%     -    0s
+
+Explored 0 nodes (769 simplex iterations) in 0.07 seconds
+Thread count was 4 (of 4 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.500000000000e+00, best bound 6.500000000000e+00, gap 0.0%
+
+Solution:
+0 1 4 3 2 
+1 1 1 0 0 
+
+Cost: 6.5
+Lower Bound: 6.5

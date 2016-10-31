@@ -1,0 +1,3 @@
+/home/jeansilva/Dropbox/Mestrado/TSP-WITH-RIDESHARING-AND-QUOTA/heuristic/CMakeFiles/edit_cache.dir
+/home/jeansilva/Dropbox/Mestrado/TSP-WITH-RIDESHARING-AND-QUOTA/heuristic/CMakeFiles/rebuild_cache.dir
+/home/jeansilva/Dropbox/Mestrado/TSP-WITH-RIDESHARING-AND-QUOTA/heuristic/CMakeFiles/heuristic.dir
