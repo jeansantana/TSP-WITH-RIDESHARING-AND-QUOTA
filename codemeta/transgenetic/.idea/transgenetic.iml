@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="CPP_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/virus.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plasmideo_recombinado.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plasmideo.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PCVPQ.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/vetor_transgenetico.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/solucao.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mersennetwister.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virus.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/vetor_transgenetico.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plasmideo_recombinado.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/macros.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/transposon.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/mersennetwister.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/transgenetic.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/endossimbionte.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/transgenetic.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/solucao.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/endossimbionte.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plasmideo.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/transposon.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PCVPQ.cpp" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="Header Search Paths">
+        <CLASSES>
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/5/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/5/include-fixed" />
+          <root url="file:///usr/lib/gcc/x86_64-linux-gnu/5/include" />
+          <root url="file:///usr/include" />
+          <root url="file:///usr/local/include" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>
