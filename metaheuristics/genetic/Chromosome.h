@@ -13,6 +13,15 @@ private:
     vi route;
     vi boarding;
     int idxProblem;
+
+    Chromosome splitAndRecombineAddUnvisited(Chromosome other);
+    // Adapted SCX for this problem
+    Chromosome sequentialConstrutiveCrossover(Chromosome other);
+    // Adapted SCX based for this problem
+    Chromosome sequentialConstrutiveCrossoverBased(Chromosome other);
+
+    int getCandidateCity(int p, vi route, vi taken);
+
 public:
 
     explicit Chromosome(vi route, vi boarding);

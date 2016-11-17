@@ -103,11 +103,9 @@ void Chromosome::repair() {
         }
     }
 
-    // add something here?
-
 }
 
-Chromosome Chromosome::reproduce(Chromosome other) {
+Chromosome Chromosome::splitAndRecombineAddUnvisited(Chromosome other) {
 
     int breakPoint = MersenneTwister::getInstance()->getRand(1, size() - 2);
     //breakPoint = 3;
@@ -134,10 +132,126 @@ Chromosome Chromosome::reproduce(Chromosome other) {
     }
 
     return Chromosome(_route, _boarding);
+
+}
+
+/**
+ * Returns the unvisited city just after p
+ * @param p Last chosen city
+ * @param route Route where we have to find a new p candidate
+ * @param taken Vector that implies who was taken in the offspring route
+ * @return A new p candidate
+*/
+
+int Chromosome::getCandidateCity(int p, vi route, vi taken) {
+
+    Shared *shared = Shared::getInstance();
+
+    int chosen = -1;
+
+    vi::iterator it = find(route.begin(), route.end(), p);
+
+    if (it != route.end()) {
+
+        for (vi::iterator i = (it + 1); i != route.end(); i++) {
+            if (taken[*i] == 0) {
+                chosen = *i;
+                break;
+            }
+        }
+
+        if (chosen == -1) {
+            FOR (j, shared->getN()) {
+                if (taken[j] == 0) {
+                    chosen = j;
+                    break;
+                }
+            }
+        }
+
+    }
+
+    return chosen;
+}
+
+Chromosome Chromosome::sequentialConstrutiveCrossover(Chromosome other) {
+
+    Shared *shared = Shared::getInstance();
+
+    vvd costs = shared->getCosts();
+    // offspring
+    vi _route, _boarding;
+
+    _route.pb(0);
+    _boarding.pb(boarding[0]);
+
+    vi _routeOther = other.getRoute();
+    vi _boardingOther = other.getBoarding();
+
+    int p = 0;
+    vi taken(shared->getN(), 0);
+    taken[0] = 1;
+
+    int offspringSize = (size() + other.size()) / 2;
+
+    while (_route.size() != offspringSize) {
+        // getting candidates cities after p
+        int c1 = getCandidateCity(p, route, taken);
+        int c2 = getCandidateCity(p, _routeOther, taken);
+
+        // c1 = c2 and != -1
+        if (c1 == -1 || c2 == -1) {
+            c1 = c1 * c2 * -1;
+            c2 = c1;
+        }
+        int brdBit = 0; // Boarding indicator for the inserted p
+        // next p
+        if (costs[p][c1] <= costs[p][c2]) {
+            p = c1;
+            int idx = find(route.begin(), route.end(), p) - route.begin();
+            if (idx < route.size()) {
+                brdBit = boarding[idx];
+            }
+        } else {
+            p = c2;
+            int idx = find(_routeOther.begin(), _routeOther.end(), p) - _routeOther.begin();
+            if (idx < _routeOther.size()) {
+                brdBit = _boardingOther[idx];
+            }
+        }
+
+        taken[p] = 1;
+        _route.pb(p);
+        _boarding.pb(brdBit);
+    }
+
+    return Chromosome(_route, _boarding);
+}
+
+Chromosome Chromosome::sequentialConstrutiveCrossoverBased(Chromosome other) {
+
+}
+
+Chromosome Chromosome::reproduce(Chromosome other) {
+
+    Shared *share = Shared::getInstance();
+    Operator op = share->getGeneticOpearator();
+
+    op = Operator ::SCX_ADP;
+
+    if (op == Operator::RECOMBINATION) {
+        return splitAndRecombineAddUnvisited(other);
+    } else if (op == Operator::SCX_ADP) {
+        return sequentialConstrutiveCrossover(other);
+    } else if (op == Operator::SCX_BASED_ADP) {
+        return sequentialConstrutiveCrossoverBased(other);
+    } else {
+        return splitAndRecombineAddUnvisited(other);
+    }
+
 }
 
 void Chromosome::mutation(double a_lim) {
-    // TODO: Ideia: get the minimum and replace by another with a good bonus?
     double m_ratio = MersenneTwister::getInstance()->getRand(0, MAX_VALUE_PROB) / MAX_VALUE_PROB;
     if (m_ratio >= a_lim) {
         int idx = MersenneTwister::getInstance()->getRand(0, size() - 1);

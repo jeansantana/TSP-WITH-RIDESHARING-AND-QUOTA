@@ -34,6 +34,12 @@ private:
     int evaluations;
     // Implies which algorithm is running
     AlgorithmType algorithmType;
+    // Implies which crossover operation have to be used
+    Operator geneticOpearator;
+public:
+    Operator getGeneticOpearator() const;
+
+    void setGeneticOpearator(Operator geneticOpearator);
 
 public:
 

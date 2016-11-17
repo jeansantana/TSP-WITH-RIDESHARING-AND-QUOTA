@@ -204,14 +204,30 @@ int main(int argc, char const *argv[]) {
 
     cout << ans.first.toString() << endl;*/
 
-    vi _route({0, 1, 3, 2});
-    vi _embark({1, 1, 1, 0});
+    vi _route({0, 1, 3, 2, 4});
+    vi _embark({1, 1, 1, 0, 0});
 
     Solution s(_route, _embark);
     Chromosome ch(_route, _embark);
     ch.repair();
+    cout << ch.toString() << endl << endl;
 
-    cout << ch.fitness().toString() << endl;
+    //cout << ch.fitness().toString() << endl;
+
+    vi __route({0, 3, 1});
+    vi __embark({0, 0, 0});
+
+    Solution _s(__route, __embark);
+    Chromosome _ch(__route, __embark);
+    _ch.repair();
+    cout << _ch.toString() << endl << endl;
+
+    // cout << _ch.fitness().toString() << endl;
+
+    Chromosome child = ch.reproduce(_ch);
+    child.repair();
+    cout << child.toString() << endl;
+
 
 
     return 0;

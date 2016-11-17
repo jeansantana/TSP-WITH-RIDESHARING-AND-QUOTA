@@ -39,5 +39,7 @@ typedef std::mt19937 mt;
 //==================================
 // Running algorithm type
 enum AlgorithmType { GENETIC, MEMETIC, TRANSGENETIC, OTHER };
+// Crossover/Recombination operation type
+enum Operator { RECOMBINATION, SCX_ADP, SCX_BASED_ADP };
 
 #endif //TSPRQ_MACROS_H_H

@@ -157,7 +157,7 @@ int GeneticAlgorithm::getCurrentPopulationSize() {
  * */
 void GeneticAlgorithm::recombination() {
 
-    MersenneTwister * mtr = MersenneTwister::getInstance();
+    //MersenneTwister * mtr = MersenneTwister::getInstance();
 
     Chromosome parent1, parent2, offspring1, offspring2;
 
