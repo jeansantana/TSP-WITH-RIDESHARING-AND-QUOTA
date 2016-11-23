@@ -1,0 +1,83 @@
+PARAMETER_FILE = ../commons/LK_FILES/TIC10-10-10-3.par
+Reading PROBLEM_FILE: "../commons/LK_FILES/TIC10-10-10-3.tsp" ... done
+ASCENT_CANDIDATES = 4
+BACKBONE_TRIALS = 0
+BACKTRACKING = NO
+# CANDIDATE_FILE =
+CANDIDATE_SET_TYPE = ALPHA
+EXCESS = 0.2
+EXTRA_CANDIDATES = 0 
+EXTRA_CANDIDATE_SET_TYPE = QUADRANT
+GAIN23 = YES
+GAIN_CRITERION = YES
+INITIAL_PERIOD = 100
+INITIAL_STEP_SIZE = 1
+INITIAL_TOUR_ALGORITHM = WALK
+# INITIAL_TOUR_FILE = 
+INITIAL_TOUR_FRACTION = 1.000
+# INPUT_TOUR_FILE = 
+KICK_TYPE = 0
+KICKS = 1
+# MAX_BREADTH =
+MAX_CANDIDATES = 4 
+MAX_SWAPS = 5
+MAX_TRIALS = 5
+# MERGE_TOUR_FILE =
+MOVE_TYPE = 5
+# NONSEQUENTIAL_MOVE_TYPE = 5
+# OPTIMUM =
+# OUTPUT_TOUR_FILE = 
+PATCHING_A = 1 
+PATCHING_C = 0 
+# PI_FILE = 
+# POPULATION_SIZE = 0
+PRECISION = 100
+PROBLEM_FILE = ../commons/LK_FILES/TIC10-10-10-3.tsp
+RESTRICTED_SEARCH = YES
+RUNS = 10
+SEED = 1
+STOP_AT_OPTIMUM = YES
+SUBGRADIENT = YES
+# SUBPROBLEM_SIZE =
+# SUBPROBLEM_TOUR_FILE = 
+SUBSEQUENT_MOVE_TYPE = 5
+SUBSEQUENT_PATCHING = YES
+# TIME_LIMIT =
+TOUR_FILE = ../commons/LK_FILES/TIC10-10-10-3.tour
+TRACE_LEVEL = 1
+
+Lower bound = 1178.0, Ascent time = 0.00 sec.
+Cand.min = 3, Cand.avg = 3.6, Cand.max = 4
+Preprocessing time = 0.00 sec.
+Writing TOUR_FILE: "../commons/LK_FILES/TIC10-10-10-3.tour" ... done
+Successes/Runs = 1/0 
+Cost.min = 1178, Cost.avg = 1178.00, Cost.max = 1178
+Gap.min = 0.0000%, Gap.avg = 0.0000%, Gap.max = 0.0000%
+Trials.min = 0, Trials.avg = 0.0, Trials.max = 0
+Time.min = 0.00 sec., Time.avg = 0.00 sec., Time.max = 0.00 sec.
+Optimize a model with 209 rows, 990 columns and 2591 nonzeros
+Model has 100 quadratic constraints
+Coefficient statistics:
+  Matrix range    [1e+00, 2e+00]
+  Objective range [7e+01, 4e+02]
+  Bounds range    [1e+00, 1e+00]
+  RHS range       [3e+00, 3e+00]
+Found heuristic solution: objective 1178
+Presolve removed 209 rows and 898 columns
+Presolve time: 0.00s
+Presolved: 101 rows, 96 columns, 118 nonzeros
+Variable types: 7 continuous, 89 integer (2 binary)
+Found heuristic solution: objective 879.5000000
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 8.795000000000e+02, best bound 8.795000000000e+02, gap 0.0%
+
+Solution:
+0 7 4 8 1 
+1 0 1 0 0 
+
+Cost: 879.5
+Lower Bound: 879.5

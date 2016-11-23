@@ -1,0 +1,89 @@
+PARAMETER_FILE = ../commons/LK_FILES/TIC37-30-30-4.par
+Reading PROBLEM_FILE: "../commons/LK_FILES/TIC37-30-30-4.tsp" ... done
+ASCENT_CANDIDATES = 11
+BACKBONE_TRIALS = 0
+BACKTRACKING = NO
+# CANDIDATE_FILE =
+CANDIDATE_SET_TYPE = ALPHA
+EXCESS = 0.0833333
+EXTRA_CANDIDATES = 0 
+EXTRA_CANDIDATE_SET_TYPE = QUADRANT
+GAIN23 = YES
+GAIN_CRITERION = YES
+INITIAL_PERIOD = 100
+INITIAL_STEP_SIZE = 1
+INITIAL_TOUR_ALGORITHM = WALK
+# INITIAL_TOUR_FILE = 
+INITIAL_TOUR_FRACTION = 1.000
+# INPUT_TOUR_FILE = 
+KICK_TYPE = 0
+KICKS = 1
+# MAX_BREADTH =
+MAX_CANDIDATES = 5 
+MAX_SWAPS = 12
+MAX_TRIALS = 12
+# MERGE_TOUR_FILE =
+MOVE_TYPE = 5
+# NONSEQUENTIAL_MOVE_TYPE = 5
+# OPTIMUM =
+# OUTPUT_TOUR_FILE = 
+PATCHING_A = 1 
+PATCHING_C = 0 
+# PI_FILE = 
+# POPULATION_SIZE = 0
+PRECISION = 100
+PROBLEM_FILE = ../commons/LK_FILES/TIC37-30-30-4.tsp
+RESTRICTED_SEARCH = YES
+RUNS = 10
+SEED = 1
+STOP_AT_OPTIMUM = YES
+SUBGRADIENT = YES
+# SUBPROBLEM_SIZE =
+# SUBPROBLEM_TOUR_FILE = 
+SUBSEQUENT_MOVE_TYPE = 5
+SUBSEQUENT_PATCHING = YES
+# TIME_LIMIT =
+TOUR_FILE = ../commons/LK_FILES/TIC37-30-30-4.tour
+TRACE_LEVEL = 1
+
+Lower bound = 1879.0, Ascent time = 0.00 sec.
+Cand.min = 5, Cand.avg = 5.0, Cand.max = 5
+Preprocessing time = 0.00 sec.
+Writing TOUR_FILE: "../commons/LK_FILES/TIC37-30-30-4.tour" ... done
+Successes/Runs = 1/0 
+Cost.min = 1879, Cost.avg = 1879.00, Cost.max = 1879
+Gap.min = 0.0000%, Gap.avg = 0.0000%, Gap.max = 0.0000%
+Trials.min = 0, Trials.avg = 0.0, Trials.max = 0
+Time.min = 0.00 sec., Time.avg = 0.00 sec., Time.max = 0.00 sec.
+Optimize a model with 1829 rows, 26970 columns and 77371 nonzeros
+Model has 900 quadratic constraints
+Coefficient statistics:
+  Matrix range    [1e+00, 2e+00]
+  Objective range [6e+01, 2e+02]
+  Bounds range    [1e+00, 1e+00]
+  RHS range       [4e+00, 4e+00]
+Found heuristic solution: objective 1879
+Presolve removed 1829 rows and 26095 columns
+Presolve time: 0.02s
+Presolved: 954 rows, 914 columns, 1110 nonzeros
+Variable types: 50 continuous, 864 integer (5 binary)
+
+Root relaxation: objective 8.415000e+02, 25 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+*    0     0               0     841.5000000  841.50000  0.00%     -    0s
+
+Explored 0 nodes (27 simplex iterations) in 0.02 seconds
+Thread count was 8 (of 8 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 8.415000000000e+02, best bound 8.415000000000e+02, gap 0.0%
+
+Solution:
+0 12 15 5 21 28 16 2 20 13 29 1 
+1 1 0 1 0 1 0 1 0 0 0 0 
+
+Cost: 841.5
+Lower Bound: 841.5

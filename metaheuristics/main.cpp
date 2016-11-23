@@ -1,3 +1,24 @@
+/**
+ * @author Jean Silva
+ * How to use the program: We have this parameters to be informed at the execution
+ * 1. Entry file
+ * 2. Params to run:
+ * 3. Population Size
+ * 4. Number of avaliations
+ * 5. Crossover rate
+ * 6. Global mutation rate
+ * 7. Algorithm type:
+ *          7.1 - 1 to use Genetic Algorithm;
+ *          7.2 - 2 to use Memetic Algorithm;
+ * 8. Genetic operator for crossover/recombination:
+ *          8.1 - 1 to use split and recombiantion operator
+ *          8.2 - 2 to use the SCX operator
+ *          8.3 - 3 to user the SCX based operator
+ *
+ * Example: ./executable instances/big.in 100 200 0.5 0.6 20 1 1
+ */
+
+
 #include "common/macros.h"
 #include "genetic/Chromosome.h"
 #include "model/Solution.h"
@@ -81,9 +102,6 @@ void assignPCVPQ(string name) {
 
 int main(int argc, char const *argv[]) {
 
-    // TODO: set b1 = 0, the first bonus must be 0
-
-    Shared * shared = Shared::getInstance();
     // read instance
     // number of cities
     int N;
@@ -92,7 +110,7 @@ int main(int argc, char const *argv[]) {
     // passenger budget
     vd passengerBudget;
     // Departure city (position) and arrival (boarding[position]) of the passenger
-    vi boarding; //Vértice de embarque (posição) e desembarque (conteúdo)
+    vi boarding; // Vértice de embarque (posição) e desembarque (conteúdo)
     // Number of passengers
     int numPassengers;
     // Vehicle capacity
@@ -104,7 +122,7 @@ int main(int argc, char const *argv[]) {
     // number of evaluations
     int evaluations;
 
-    /*freopen (argv[1], "r", stdin);
+    freopen (argv[1], "r", stdin);
 
     cin >> N >> numPassengers >> vehicleCapacity;
     // cost matrix
@@ -135,16 +153,9 @@ int main(int argc, char const *argv[]) {
         cin >> city >> cBonus;
         bonuses.pb(cBonus);
     }
+
     // ensures the bonus in the city 0 is 0
-    //bonuses[0] = 0;
-*/
-
-    // ======= //
-
-//    assignPCVPQ("/home/jeansilva/Dropbox/Mestrado/metaheuristica/PCV-PQ/src/instances/paper/all/10-10-50/TIC15-10-10-4.in");
-    assignPCVPQ("/home/jeansilva/Dropbox/Mestrado/metaheuristica/PCV-PQ/src/instances/big.in");
-
-    // ======= //
+    bonuses[0] = 0;
 
 
     // converts the problem to TSP with Passengers (with no quota)
@@ -152,58 +163,55 @@ int main(int argc, char const *argv[]) {
     FOR(i, N) somaBonus+= bonuses[i];
     minimumQuota = somaBonus;*/
 
+    stringstream sst;
+    sst << argv[2];
+    int tamPop; sst >> tamPop; sst.clear();
+    sst << argv[3];
+    int num_aval; sst >> num_aval; sst.clear();
+    sst << argv[4];
+    double corssoverRate; sst >> corssoverRate; sst.clear();
+    int numCrossovers = (tamPop * corssoverRate) / 2;
+    sst << argv[5];
+    double mutationRate; sst >> mutationRate; sst.clear();
+    sst << argv[6];
+    int algorithmeType; sst >> algorithmeType;
+    sst << argv[7];
+    int geneticOperator; sst >> geneticOperator;
+
+    // não é um parâmetro para o iRace
+    /*sst << argv[6];*/
+    int rodadas = NUM_RODADAS; //sst >> rodadas; sst.clear();
+
     // set the singleton Shared
-    /*shared->setN(N);
+    Shared * shared = Shared::getInstance();
+
+    // setting the size of cost matrix
+    shared->setN(N);
+    // setting the embarking
     shared->setBoarding(boarding);
+    // setting the bonuses values
     shared->setBonuses(bonuses);
+    // setting the minimum quota
     shared->setMinimumQuota(minimumQuota);
+    // setting numeber of passengers
     shared->setNumPassengers(numPassengers);
+    // setting the vehicle capacity
     shared->setVehicleCapacity(vehicleCapacity);
+    // setting the passenger budget
     shared->setPassengerBudget(passengerBudget);
-    shared->setCosts(costs);*/
+    // setting the costs
+    shared->setCosts(costs);
+    // setting the algorithm wich is running
+    shared->setAlgorithmType((AlgorithmType) algorithmeType - 1);
+    // setting the agenetic operator wich is used
+    shared->setGeneticOpearator((GeneticOperator) geneticOperator - 1);
+
+
 
     //cout << shared->toString() << endl;
 
-    /*vi route({0, 6, 2, 7, 5, 3, 1, 4, 8, 9});
-    vi embark({1, 1, 1, 0, 0, 1, 0, 1, 1, 0});
-
-    *//*Solution s(route, embark);
-    cout << s.toString() << endl;*//*
-
-    Chromosome c(route, embark);
-    //cout << c.fitness().toString() << endl;
-    cout << c.toString() << endl;
-    c.repair();
-    //cout << c.fitness().toString() << endl;
-    cout << c.toString() << endl;
-
-    vi _route({0, 5, 4, 6, 2});
-    vi _embark({1, 0, 0, 1, 1});
-    *//*vi r({0, 6, 2, 7, 5, 3});
-    vi e({1, 1, 1, 0, 0, 1});*//*
-
-    Chromosome b(_route, _embark);
-    b.repair();
-
-//    cout << "B:\n" << b.toString() << endl;
-
-    Chromosome f1 = c.reproduce(b);
-    //f1.fitness();
-    cout << f1.toString() << endl;*/
-
-    //c.reproduce()
-
-    //cout << " ------------ \n";
-    //int pro;
-    //cout << s.fitness(route, embark, pro).getCost() << endl;
-    //    int populationSize, double admissibilityLimit, int maxEvaluations, int recombinationRate
-
-    /*GeneticAlgorithm ga(1000, 0.4, 10000, 0.5);
-
-    pair<Solution, Chromosome> ans = ga.run();
-
-    cout << ans.first.toString() << endl;*/
-
+    /*
+    How to use the Chromosome and Solution Class
     vi _route({0, 1, 3, 2, 4});
     vi _embark({1, 1, 1, 0, 0});
 
@@ -226,9 +234,7 @@ int main(int argc, char const *argv[]) {
 
     Chromosome child = ch.reproduce(_ch);
     child.repair();
-    cout << child.toString() << endl;
-
-
+    cout << child.toString() << endl;*/
 
     return 0;
 }

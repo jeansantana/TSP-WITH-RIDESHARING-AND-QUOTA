@@ -37,9 +37,9 @@ typedef vector< vector < double > > vvd;
 //======== Random macros and vars ===========
 typedef std::mt19937 mt;
 //==================================
-// Running algorithm type
-enum AlgorithmType { GENETIC, MEMETIC, TRANSGENETIC, OTHER };
+// Running algorithm type for evolutionary algorithme
+enum AlgorithmType { GENETIC, MEMETIC };
 // Crossover/Recombination operation type
-enum Operator { RECOMBINATION, SCX_ADP, SCX_BASED_ADP };
+enum GeneticOperator { RECOMBINATION, SCX_ADP, SCX_BASED_ADP };
 
 #endif //TSPRQ_MACROS_H_H

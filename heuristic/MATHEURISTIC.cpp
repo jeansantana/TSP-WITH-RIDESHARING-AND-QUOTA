@@ -129,6 +129,11 @@ void heuristic(string filename) {
 			B.pb( ii(i, bonus[i]) );
 		}
 
+		/*cout << "\nVERTICES SORTED BY BONUS:\n";
+		FOR (i, n) {
+			cout << B[i].first << ", " << B[i].second << endl;
+		}*/
+
 		sort(B.begin(), B.end(), bonusCmp);
 
 		int totalBonus = 0;
@@ -143,20 +148,20 @@ void heuristic(string filename) {
 			}
 		}
 
-		// cout << "VERTICES SET:\n";
-		// FOR(i, gvertices.size()) {
-		// 	cout << gvertices[i] << " ";
-		// }
-		// cout << "\n";
+		/*cout << "VERTICES SET:\n";
+		FOR(i, gvertices.size()) {
+			cout << gvertices[i] << " ";
+		}
+		cout << "\n";*/
 
 		LKHParser parser(LKH_PATH, LK_FILES_PATH, gvertices, d, filename, string("TSP"));
     	vi path = parser.LKHSolution();
 
-		// cout << "LK ROUTE: " << endl;
-		// FOR (i, path.size()) {
-		// 	cout << path[i] << " ";
-		// }
-		// cout << endl;
+		/*cout << "LK ROUTE: " << endl;
+		FOR (i, path.size()) {
+			cout << path[i] << " ";
+		}
+		cout << endl;*/
 
 		// init the x matrix		
 		FOR(i, n) {
@@ -279,45 +284,6 @@ void heuristic(string filename) {
 
 	 	model.optimize();
 		
-		/*int l = 4;
-		double sum_aux = 0;
-		FOR(i, n) {
-			FOR(j, n) {
-				if (i != j) {
-					
-					double aux = v[l][i][j].get(GRB_DoubleAttr_X) * d[i][j] * alfa[i][j].get(GRB_DoubleAttr_X);
-
-					double _a = 0; 
-					FOR(t, p) {
-						_a+= v[t][i][j].get(GRB_DoubleAttr_X);
-					}
-
-					if (aux != 0) {
-						cout << i << "-" << j << endl;
-						sum_aux+= aux;
-						cout << "Alfa: " << 1/alfa[i][j].get(GRB_DoubleAttr_X) << " " << _a << endl;
-						cout << (double) aux * 1/alfa[i][j].get(GRB_DoubleAttr_X) << endl;
-						cout << "dij = " << d[i][j] << endl;
-						cout << aux << "\n--------\n";
-					}
-					//quad+= v[l][i][j] * d[i][j] * alfa[i][j];
-				}
-			}
-		}
-		cout << sum_aux << endl;*/
-
-		// cout << "EMBARQUE:\n";
-		// FOR (l, p) {
-		// 	FOR (i, n) {
-		// 		FOR ( j, n) {
-		// 			if ( i != j )
-		// 				if ( v[l][i][j].get(GRB_DoubleAttr_X) == 1 ) 
-		// 					cout << "v" << l << "_" << i << "_" << j << " = " << v[l][i][j].get(GRB_DoubleAttr_X) << endl;
-		// 		}
-		// 	}
-		// }
-	 	
-
 		cout << "\nSolution:\n";
 
 	 	FOR(i, path.size()) {

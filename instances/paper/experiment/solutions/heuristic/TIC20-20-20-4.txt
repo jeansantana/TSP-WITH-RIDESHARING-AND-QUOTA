@@ -1,0 +1,83 @@
+PARAMETER_FILE = ../commons/LK_FILES/TIC20-20-20-4.par
+Reading PROBLEM_FILE: "../commons/LK_FILES/TIC20-20-20-4.tsp" ... done
+ASCENT_CANDIDATES = 7
+BACKBONE_TRIALS = 0
+BACKTRACKING = NO
+# CANDIDATE_FILE =
+CANDIDATE_SET_TYPE = ALPHA
+EXCESS = 0.125
+EXTRA_CANDIDATES = 0 
+EXTRA_CANDIDATE_SET_TYPE = QUADRANT
+GAIN23 = YES
+GAIN_CRITERION = YES
+INITIAL_PERIOD = 100
+INITIAL_STEP_SIZE = 1
+INITIAL_TOUR_ALGORITHM = WALK
+# INITIAL_TOUR_FILE = 
+INITIAL_TOUR_FRACTION = 1.000
+# INPUT_TOUR_FILE = 
+KICK_TYPE = 0
+KICKS = 1
+# MAX_BREADTH =
+MAX_CANDIDATES = 5 
+MAX_SWAPS = 8
+MAX_TRIALS = 8
+# MERGE_TOUR_FILE =
+MOVE_TYPE = 5
+# NONSEQUENTIAL_MOVE_TYPE = 5
+# OPTIMUM =
+# OUTPUT_TOUR_FILE = 
+PATCHING_A = 1 
+PATCHING_C = 0 
+# PI_FILE = 
+# POPULATION_SIZE = 0
+PRECISION = 100
+PROBLEM_FILE = ../commons/LK_FILES/TIC20-20-20-4.tsp
+RESTRICTED_SEARCH = YES
+RUNS = 10
+SEED = 1
+STOP_AT_OPTIMUM = YES
+SUBGRADIENT = YES
+# SUBPROBLEM_SIZE =
+# SUBPROBLEM_TOUR_FILE = 
+SUBSEQUENT_MOVE_TYPE = 5
+SUBSEQUENT_PATCHING = YES
+# TIME_LIMIT =
+TOUR_FILE = ../commons/LK_FILES/TIC20-20-20-4.tour
+TRACE_LEVEL = 1
+
+Lower bound = 1579.0, Ascent time = 0.00 sec.
+Cand.min = 5, Cand.avg = 5.0, Cand.max = 5
+Preprocessing time = 0.00 sec.
+Writing TOUR_FILE: "../commons/LK_FILES/TIC20-20-20-4.tour" ... done
+Successes/Runs = 1/0 
+Cost.min = 1579, Cost.avg = 1579.00, Cost.max = 1579
+Gap.min = 0.0000%, Gap.avg = 0.0000%, Gap.max = 0.0000%
+Trials.min = 0, Trials.avg = 0.0, Trials.max = 0
+Time.min = 0.00 sec., Time.avg = 0.00 sec., Time.max = 0.00 sec.
+Optimize a model with 819 rows, 7980 columns and 22381 nonzeros
+Model has 400 quadratic constraints
+Coefficient statistics:
+  Matrix range    [1e+00, 2e+00]
+  Objective range [8e+01, 5e+02]
+  Bounds range    [1e+00, 1e+00]
+  RHS range       [4e+00, 4e+00]
+Found heuristic solution: objective 1579
+Presolve removed 819 rows and 7598 columns
+Presolve time: 0.00s
+Presolved: 400 rows, 391 columns, 436 nonzeros
+Variable types: 14 continuous, 377 integer (2 binary)
+Found heuristic solution: objective 1531.5000000
+
+Explored 0 nodes (0 simplex iterations) in 0.01 seconds
+Thread count was 8 (of 8 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.531500000000e+03, best bound 1.531500000000e+03, gap 0.0%
+
+Solution:
+0 4 10 11 15 14 7 2 
+0 0 1 0 0 0 0 0 
+
+Cost: 1531.5
+Lower Bound: 1531.5

@@ -11,6 +11,13 @@ GeneticAlgorithm::GeneticAlgorithm() {
 
 }
 
+
+GeneticAlgorithm::GeneticAlgorithm(int populationSize, double admissibilityLimit, int maxEvaluations,
+                                   double recombinationRate) : populationSize(populationSize),
+                                                               admissibilityLimit(admissibilityLimit),
+                                                               maxEvaluations(maxEvaluations),
+                                                               recombinationRate(recombinationRate) {}
+
 GeneticAlgorithm::GeneticAlgorithm(const vector<Chromosome> &population, int populationSize, double admissibilityLimit,
                                    int maxEvaluations, double recombinationRate) : population(population),
                                                                                    populationSize(populationSize),
@@ -19,12 +26,6 @@ GeneticAlgorithm::GeneticAlgorithm(const vector<Chromosome> &population, int pop
                                                                                    maxEvaluations(maxEvaluations),
                                                                                    recombinationRate(
                                                                                            recombinationRate) {}
-
-GeneticAlgorithm::GeneticAlgorithm(int populationSize, double admissibilityLimit, int maxEvaluations,
-                                   double recombinationRate) : populationSize(populationSize),
-                                                               admissibilityLimit(admissibilityLimit),
-                                                               maxEvaluations(maxEvaluations),
-                                                               recombinationRate(recombinationRate) {}
 
 const vector<Chromosome> &GeneticAlgorithm::getPopulation() const {
     return population;
@@ -170,12 +171,18 @@ void GeneticAlgorithm::recombination() {
     offspring1.mutation(admissibilityLimit);
     offspring1.repair();
 
-    offspring2 = parent2.reproduce(parent1);
-    offspring2.mutation(admissibilityLimit);
-    offspring2.repair();
-
     population.pb(offspring1);
-    population.pb(offspring2);
+
+    Shared *shared = Shared::getInstance();
+    if (shared->getGeneticOpearator() == GeneticOperator::RECOMBINATION) {
+
+        offspring2 = parent2.reproduce(parent1);
+        offspring2.mutation(admissibilityLimit);
+        offspring2.repair();
+
+        population.pb(offspring2);
+
+    }
 
 }
 
@@ -197,6 +204,8 @@ pair<Solution, Chromosome> GeneticAlgorithm::getBestSolutionOfPopulation() {
 }
 
 pair<Solution, Chromosome> GeneticAlgorithm::run() {
+    // TODO: add a number of runs here to control the runs
+    // TODO: create folder and store the runs and a final file with the informations
     // initializing the initial population
     initPopulation();
 
@@ -214,3 +223,4 @@ pair<Solution, Chromosome> GeneticAlgorithm::run() {
 
     return getBestSolutionOfPopulation();
 }
+

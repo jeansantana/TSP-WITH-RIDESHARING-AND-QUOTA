@@ -35,11 +35,15 @@ private:
     // Implies which algorithm is running
     AlgorithmType algorithmType;
     // Implies which crossover operation have to be used
-    Operator geneticOpearator;
+    GeneticOperator geneticOpearator;
 public:
-    Operator getGeneticOpearator() const;
+    AlgorithmType getAlgorithmType() const;
 
-    void setGeneticOpearator(Operator geneticOpearator);
+    void setAlgorithmType(AlgorithmType algorithmType);
+
+    GeneticOperator getGeneticOpearator() const;
+
+    void setGeneticOpearator(GeneticOperator geneticOpearator);
 
 public:
 
@@ -84,10 +88,6 @@ public:
     void incrementEvaluations();
 
     string toString();
-
-    AlgorithmType getAlgorithmType() const;
-
-    void setAlgorithmType(AlgorithmType algorithmType);
 
 };
 

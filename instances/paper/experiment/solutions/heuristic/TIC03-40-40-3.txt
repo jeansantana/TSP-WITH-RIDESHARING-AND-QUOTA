@@ -1,0 +1,113 @@
+PARAMETER_FILE = ../commons/LK_FILES/TIC03-40-40-3.par
+Reading PROBLEM_FILE: "../commons/LK_FILES/TIC03-40-40-3.tsp" ... done
+ASCENT_CANDIDATES = 13
+BACKBONE_TRIALS = 0
+BACKTRACKING = NO
+# CANDIDATE_FILE =
+CANDIDATE_SET_TYPE = ALPHA
+EXCESS = 0.0714286
+EXTRA_CANDIDATES = 0 
+EXTRA_CANDIDATE_SET_TYPE = QUADRANT
+GAIN23 = YES
+GAIN_CRITERION = YES
+INITIAL_PERIOD = 100
+INITIAL_STEP_SIZE = 1
+INITIAL_TOUR_ALGORITHM = WALK
+# INITIAL_TOUR_FILE = 
+INITIAL_TOUR_FRACTION = 1.000
+# INPUT_TOUR_FILE = 
+KICK_TYPE = 0
+KICKS = 1
+# MAX_BREADTH =
+MAX_CANDIDATES = 5 
+MAX_SWAPS = 14
+MAX_TRIALS = 14
+# MERGE_TOUR_FILE =
+MOVE_TYPE = 5
+# NONSEQUENTIAL_MOVE_TYPE = 5
+# OPTIMUM =
+# OUTPUT_TOUR_FILE = 
+PATCHING_A = 1 
+PATCHING_C = 0 
+# PI_FILE = 
+# POPULATION_SIZE = 0
+PRECISION = 100
+PROBLEM_FILE = ../commons/LK_FILES/TIC03-40-40-3.tsp
+RESTRICTED_SEARCH = YES
+RUNS = 10
+SEED = 1
+STOP_AT_OPTIMUM = YES
+SUBGRADIENT = YES
+# SUBPROBLEM_SIZE =
+# SUBPROBLEM_TOUR_FILE = 
+SUBSEQUENT_MOVE_TYPE = 5
+SUBSEQUENT_PATCHING = YES
+# TIME_LIMIT =
+TOUR_FILE = ../commons/LK_FILES/TIC03-40-40-3.tour
+TRACE_LEVEL = 1
+
+Lower bound = 1623.8, Ascent time = 0.00 sec.
+Cand.min = 3, Cand.avg = 4.8, Cand.max = 5
+Preprocessing time = 0.00 sec.
+* 1: Cost = 1626, Time = 0.00 sec. 
+Writing TOUR_FILE: "../commons/LK_FILES/TIC03-40-40-3.tour" ... done
+Run 1: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 2: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 3: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 4: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 5: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 6: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 7: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 8: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 9: Cost = 1626, Time = 0.00 sec. 
+
+* 1: Cost = 1626, Time = 0.00 sec. 
+Run 10: Cost = 1626, Time = 0.00 sec. 
+
+Successes/Runs = 0/10 
+Cost.min = 1626, Cost.avg = 1626.00, Cost.max = 1626
+Gap.min = 0.0000%, Gap.avg = 0.0000%, Gap.max = 0.0000%
+Trials.min = 14, Trials.avg = 14.0, Trials.max = 14
+Time.min = 0.00 sec., Time.avg = 0.00 sec., Time.max = 0.00 sec.
+Optimize a model with 3239 rows, 63960 columns and 185561 nonzeros
+Model has 1600 quadratic constraints
+Coefficient statistics:
+  Matrix range    [1e+00, 2e+00]
+  Objective range [5e+01, 2e+02]
+  Bounds range    [1e+00, 1e+00]
+  RHS range       [3e+00, 3e+00]
+Found heuristic solution: objective 1626
+Presolve removed 3239 rows and 62398 columns
+Presolve time: 0.07s
+Presolved: 1596 rows, 1579 columns, 1664 nonzeros
+Variable types: 26 continuous, 1553 integer (2 binary)
+Found heuristic solution: objective 1085.5000000
+
+Explored 0 nodes (0 simplex iterations) in 0.08 seconds
+Thread count was 8 (of 8 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.085500000000e+03, best bound 1.085500000000e+03, gap 0.0%
+
+Solution:
+0 25 9 34 22 38 1 14 13 7 32 30 18 39 
+0 1 1 0 0 0 0 0 0 0 0 0 0 0 
+
+Cost: 1085.5
+Lower Bound: 1085.5

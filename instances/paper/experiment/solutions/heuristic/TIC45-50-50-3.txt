@@ -1,0 +1,132 @@
+PARAMETER_FILE = ../commons/LK_FILES/TIC45-50-50-3.par
+Reading PROBLEM_FILE: "../commons/LK_FILES/TIC45-50-50-3.tsp" ... done
+ASCENT_CANDIDATES = 16
+BACKBONE_TRIALS = 0
+BACKTRACKING = NO
+# CANDIDATE_FILE =
+CANDIDATE_SET_TYPE = ALPHA
+EXCESS = 0.0588235
+EXTRA_CANDIDATES = 0 
+EXTRA_CANDIDATE_SET_TYPE = QUADRANT
+GAIN23 = YES
+GAIN_CRITERION = YES
+INITIAL_PERIOD = 100
+INITIAL_STEP_SIZE = 1
+INITIAL_TOUR_ALGORITHM = WALK
+# INITIAL_TOUR_FILE = 
+INITIAL_TOUR_FRACTION = 1.000
+# INPUT_TOUR_FILE = 
+KICK_TYPE = 0
+KICKS = 1
+# MAX_BREADTH =
+MAX_CANDIDATES = 5 
+MAX_SWAPS = 17
+MAX_TRIALS = 17
+# MERGE_TOUR_FILE =
+MOVE_TYPE = 5
+# NONSEQUENTIAL_MOVE_TYPE = 5
+# OPTIMUM =
+# OUTPUT_TOUR_FILE = 
+PATCHING_A = 1 
+PATCHING_C = 0 
+# PI_FILE = 
+# POPULATION_SIZE = 0
+PRECISION = 100
+PROBLEM_FILE = ../commons/LK_FILES/TIC45-50-50-3.tsp
+RESTRICTED_SEARCH = YES
+RUNS = 10
+SEED = 1
+STOP_AT_OPTIMUM = YES
+SUBGRADIENT = YES
+# SUBPROBLEM_SIZE =
+# SUBPROBLEM_TOUR_FILE = 
+SUBSEQUENT_MOVE_TYPE = 5
+SUBSEQUENT_PATCHING = YES
+# TIME_LIMIT =
+TOUR_FILE = ../commons/LK_FILES/TIC45-50-50-3.tour
+TRACE_LEVEL = 1
+
+Lower bound = 1669.0, Ascent time = 0.00 sec.
+Cand.min = 4, Cand.avg = 4.9, Cand.max = 5
+Preprocessing time = 0.00 sec.
+* 1: Cost = 1682, Time = 0.00 sec. 
+Writing TOUR_FILE: "../commons/LK_FILES/TIC45-50-50-3.tour" ... done
+Run 1: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 2: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 3: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 4: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 5: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 6: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 7: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 8: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 9: Cost = 1682, Time = 0.00 sec. 
+
+* 1: Cost = 1682, Time = 0.00 sec. 
+Run 10: Cost = 1682, Time = 0.00 sec. 
+
+Successes/Runs = 0/10 
+Cost.min = 1682, Cost.avg = 1682.00, Cost.max = 1682
+Gap.min = 0.0000%, Gap.avg = 0.0000%, Gap.max = 0.0000%
+Trials.min = 17, Trials.avg = 17.0, Trials.max = 17
+Time.min = 0.00 sec., Time.avg = 0.00 sec., Time.max = 0.00 sec.
+Optimize a model with 5049 rows, 124950 columns and 364951 nonzeros
+Model has 2500 quadratic constraints
+Coefficient statistics:
+  Matrix range    [1e+00, 2e+00]
+  Objective range [5e+01, 2e+02]
+  Bounds range    [1e+00, 1e+00]
+  RHS range       [3e+00, 3e+00]
+Found heuristic solution: objective 1682
+Presolve removed 5048 rows and 122495 columns
+Presolve time: 0.17s
+Presolved: 2586 rows, 2500 columns, 2815 nonzeros
+Variable types: 60 continuous, 2440 integer (5 binary)
+
+Root relaxation: objective 6.647333e+02, 54 iterations, 0.00 seconds
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  664.73333    0    3 1682.00000  664.73333  60.5%     -    0s
+     0     0  670.14333    0    4 1682.00000  670.14333  60.2%     -    0s
+H    0     0                     958.1666667  670.14333  30.1%     -    0s
+H    0     0                     694.7500000  670.14333  3.54%     -    0s
+     0     0  682.08250    0    3  694.75000  682.08250  1.82%     -    0s
+     0     0  682.15417    0    3  694.75000  682.15417  1.81%     -    0s
+     0     0  688.18898    0    2  694.75000  688.18898  0.94%     -    0s
+     0     0  689.50634    0    4  694.75000  689.50634  0.75%     -    0s
+     0     0  689.54201    0    3  694.75000  689.54201  0.75%     -    0s
+     0     0     cutoff    0       694.75000  694.75000  0.00%     -    0s
+
+Cutting planes:
+  Gomory: 6
+  Flow cover: 10
+
+Explored 0 nodes (91 simplex iterations) in 0.19 seconds
+Thread count was 8 (of 8 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 6.947500000000e+02, best bound 6.947500000000e+02, gap 0.0%
+
+Solution:
+0 14 27 15 36 37 2 35 47 10 21 34 5 32 39 12 43 
+1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 
+
+Cost: 694.75
+Lower Bound: 694.75

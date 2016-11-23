@@ -230,20 +230,127 @@ Chromosome Chromosome::sequentialConstrutiveCrossover(Chromosome other) {
 
 Chromosome Chromosome::sequentialConstrutiveCrossoverBased(Chromosome other) {
 
+    Shared *shared = Shared::getInstance();
+
+    vvd costs = shared->getCosts();
+    // offspring
+    vi _route, _boarding;
+
+    _route.pb(0);
+    _boarding.pb(boarding[0]);
+
+    vi _routeOther = other.getRoute();
+    vi _boardingOther = other.getBoarding();
+
+    int p = 0;
+    vi taken(shared->getN(), 0);
+    taken[0] = 1;
+
+    int offspringSize = (size() + other.size()) / 2;
+
+    // getting candidates cities after p
+    int c1 = getCandidateCity(p, route, taken);
+    int c2 = getCandidateCity(p, _routeOther, taken);
+
+    // The gene was inhited from parente 1?
+    bool inhP1 = false;
+
+    // c1 = c2 and != -1
+    if (c1 == -1 || c2 == -1) {
+        c1 = c1 * c2 * -1;
+        c2 = c1;
+    }
+
+    int brdBit = 0; // Boarding indicator for the inserted p
+    int idx;
+    // next p
+    if (costs[p][c1] <= costs[p][c2]) {
+        p = c1;
+        idx = find(route.begin(), route.end(), p) - route.begin();
+        if (idx < route.size()) {
+            brdBit = boarding[idx];
+            inhP1 = true;
+        }
+    } else {
+        p = c2;
+        idx = find(_routeOther.begin(), _routeOther.end(), p) - _routeOther.begin();
+        if (idx < _routeOther.size()) {
+            brdBit = _boardingOther[idx];
+            inhP1 = false;
+        }
+    }
+
+    taken[p] = 1;
+    _route.pb(p);
+    _boarding.pb(brdBit);
+
+    // copy from p2
+
+    if (inhP1) {
+
+        // cout << "copy from p2\n";
+
+        FORR (i, idx, _routeOther.size()) {
+
+            int rVal = -1, bVal = 0;
+
+            if (taken[ _routeOther[i] ] == 0) {
+                taken[ _routeOther[i] ] = 1;
+                rVal = _routeOther[i];
+                bVal = _boardingOther[i];
+            }
+            _route.pb(rVal);
+            _boarding.pb(bVal);
+
+        }
+    } else { // copy from p1
+
+        // cout << "copy from p1\n";
+
+        FORR (i, idx, route.size()) {
+
+            int rVal = -1, bVal = 0;
+
+            if (taken[ route[i] ] == 0) {
+                taken[ route[i] ] = 1;
+                rVal = route[i];
+                bVal = boarding[i];
+            }
+            _route.pb(rVal);
+            _boarding.pb(bVal);
+        }
+    }
+
+    queue<int> candidates;
+    // preprocessing the canditates list
+    FOR (i, shared->getN()) {
+        if (taken[i] == 0) {
+            candidates.push(i);
+        }
+    }
+
+    if (!candidates.empty()) {
+        FOR (i, _route.size()) {
+            if (_route[i] == -1) {
+                _route[i] = candidates.front();
+                candidates.pop();
+            }
+        }
+    }
+
+    return Chromosome(_route, _boarding);
 }
 
 Chromosome Chromosome::reproduce(Chromosome other) {
 
     Shared *share = Shared::getInstance();
-    Operator op = share->getGeneticOpearator();
+    GeneticOperator op = share->getGeneticOpearator();
 
-    op = Operator ::SCX_ADP;
-
-    if (op == Operator::RECOMBINATION) {
+    if (op == GeneticOperator::RECOMBINATION) {
         return splitAndRecombineAddUnvisited(other);
-    } else if (op == Operator::SCX_ADP) {
+    } else if (op == GeneticOperator::SCX_ADP) {
         return sequentialConstrutiveCrossover(other);
-    } else if (op == Operator::SCX_BASED_ADP) {
+    } else if (op == GeneticOperator::SCX_BASED_ADP) {
         return sequentialConstrutiveCrossoverBased(other);
     } else {
         return splitAndRecombineAddUnvisited(other);

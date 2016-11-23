@@ -1,0 +1,82 @@
+PARAMETER_FILE = ../commons/LK_FILES/TIC17-10-10-4.par
+Reading PROBLEM_FILE: "../commons/LK_FILES/TIC17-10-10-4.tsp" ... done
+ASCENT_CANDIDATES = 4
+BACKBONE_TRIALS = 0
+BACKTRACKING = NO
+# CANDIDATE_FILE =
+CANDIDATE_SET_TYPE = ALPHA
+EXCESS = 0.2
+EXTRA_CANDIDATES = 0 
+EXTRA_CANDIDATE_SET_TYPE = QUADRANT
+GAIN23 = YES
+GAIN_CRITERION = YES
+INITIAL_PERIOD = 100
+INITIAL_STEP_SIZE = 1
+INITIAL_TOUR_ALGORITHM = WALK
+# INITIAL_TOUR_FILE = 
+INITIAL_TOUR_FRACTION = 1.000
+# INPUT_TOUR_FILE = 
+KICK_TYPE = 0
+KICKS = 1
+# MAX_BREADTH =
+MAX_CANDIDATES = 4 
+MAX_SWAPS = 5
+MAX_TRIALS = 5
+# MERGE_TOUR_FILE =
+MOVE_TYPE = 5
+# NONSEQUENTIAL_MOVE_TYPE = 5
+# OPTIMUM =
+# OUTPUT_TOUR_FILE = 
+PATCHING_A = 1 
+PATCHING_C = 0 
+# PI_FILE = 
+# POPULATION_SIZE = 0
+PRECISION = 100
+PROBLEM_FILE = ../commons/LK_FILES/TIC17-10-10-4.tsp
+RESTRICTED_SEARCH = YES
+RUNS = 10
+SEED = 1
+STOP_AT_OPTIMUM = YES
+SUBGRADIENT = YES
+# SUBPROBLEM_SIZE =
+# SUBPROBLEM_TOUR_FILE = 
+SUBSEQUENT_MOVE_TYPE = 5
+SUBSEQUENT_PATCHING = YES
+# TIME_LIMIT =
+TOUR_FILE = ../commons/LK_FILES/TIC17-10-10-4.tour
+TRACE_LEVEL = 1
+
+Lower bound = 915.0, Ascent time = 0.00 sec.
+Cand.min = 4, Cand.avg = 4.0, Cand.max = 4
+Preprocessing time = 0.00 sec.
+Writing TOUR_FILE: "../commons/LK_FILES/TIC17-10-10-4.tour" ... done
+Successes/Runs = 1/0 
+Cost.min = 915, Cost.avg = 915.00, Cost.max = 915
+Gap.min = 0.0000%, Gap.avg = 0.0000%, Gap.max = 0.0000%
+Trials.min = 0, Trials.avg = 0.0, Trials.max = 0
+Time.min = 0.00 sec., Time.avg = 0.00 sec., Time.max = 0.00 sec.
+Optimize a model with 209 rows, 990 columns and 2591 nonzeros
+Model has 100 quadratic constraints
+Coefficient statistics:
+  Matrix range    [1e+00, 2e+00]
+  Objective range [6e+01, 3e+02]
+  Bounds range    [1e+00, 1e+00]
+  RHS range       [4e+00, 4e+00]
+Found heuristic solution: objective 915
+Presolve removed 209 rows and 900 columns
+Presolve time: 0.00s
+Presolved: 90 rows, 90 columns, 90 nonzeros
+Variable types: 0 continuous, 90 integer (0 binary)
+
+Explored 0 nodes (0 simplex iterations) in 0.00 seconds
+Thread count was 8 (of 8 available processors)
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 9.150000000000e+02, best bound 9.150000000000e+02, gap 0.0%
+
+Solution:
+0 1 5 9 3 
+0 0 0 0 0 
+
+Cost: 915
+Lower Bound: 915

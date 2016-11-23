@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.5)
-project(heuristic)
+project(MATHEURISTIC)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 
-set(SOURCE_FILES heuristic.cpp ../commons/LKHParser.h ../commons/LKHParser.cpp ../commons/FileHelper.h ../commons/FileHelper.cpp)
-add_executable(heuristic ${SOURCE_FILES})
+set(SOURCE_FILES MATHEURISTIC.cpp ../commons/LKHParser.h ../commons/LKHParser.cpp ../commons/FileHelper.h ../commons/FileHelper.cpp)
+add_executable(MATHEURISTIC.run ${SOURCE_FILES})
 
 if (GUROBI_INCLUDE_DIR)
 # in cache already
@@ -54,5 +54,5 @@ set(GUROBI_LIBRARIES "${GUROBI_LIBRARY};${GUROBI_CXX_LIBRARY}" )
 endif(GUROBI_INCLUDE_DIR)
 
 include_directories(${GUROBI_INCLUDE_DIR})
-target_link_libraries(heuristic ${GUROBI_CXX_LIBRARY})
-target_link_libraries(heuristic ${GUROBI_LIBRARY})
+target_link_libraries(MATHEURISTIC.run ${GUROBI_CXX_LIBRARY})
+target_link_libraries(MATHEURISTIC.run ${GUROBI_LIBRARY})

@@ -1,5 +1,18 @@
 #include "LKHParser.h"
 
+/**
+* Parser for using the LKH (Lin-Kernighan heuristic) 2.0.7 by Keld Helsgaun 
+* http://webhotel4.ruc.dk/~keld/research/LKH/
+* This class converts the set of vertices and yours weight respectively in a .tsp file
+* and creates a .par file (entry file for the LKH) too
+*
+* @param LKH_PATH Path to LKH executable
+* @param LK_FILES_PATH were the .tsp will be stored
+* @param set The set of vertices
+* @param costs The costs to each vertices on set
+* @param nameInstance Instace name
+* @param tspType Entry file extension, for instance ".tsp" is identified as "TSP" according to the TSP lib
+*/
 LKHParser::LKHParser(string LKH_PATH, string LK_FILES_PATH, vector<int> set, vector < vector<double> > costs, string nameInstance, string tspType) {
     this->set = set;
     this->nameInstance = nameInstance;
@@ -72,7 +85,6 @@ vector<int> LKHParser::LKHSolution() {
     // now we able to read that file
     FileHelper fhelper;
     string tour = fhelper.readFile(LK_FILES_PATH + this->nameInstance + ".tour");
-
     vector<int> tr;
 
     int begin = tour.find("TOUR_SECTION") + string("TOUR_SECTION").size() + 1;

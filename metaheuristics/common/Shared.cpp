@@ -122,11 +122,11 @@ void Shared::setAlgorithmType(AlgorithmType algorithmType) {
     Shared::algorithmType = algorithmType;
 }
 
-Operator Shared::getGeneticOpearator() const {
+GeneticOperator Shared::getGeneticOpearator() const {
     return geneticOpearator;
 }
 
-void Shared::setGeneticOpearator(Operator geneticOpearator) {
+void Shared::setGeneticOpearator(GeneticOperator geneticOpearator) {
     Shared::geneticOpearator = geneticOpearator;
 }
 
