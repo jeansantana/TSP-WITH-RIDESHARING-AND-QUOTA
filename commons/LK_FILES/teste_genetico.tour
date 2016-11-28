@@ -1,0 +1,15 @@
+NAME : teste_genetico.1358.tour
+COMMENT : Length = 1358
+COMMENT : Found by LKH [Keld Helsgaun] Mon Nov 28 15:08:23 2016
+TYPE : TOUR
+DIMENSION : 7
+TOUR_SECTION
+1
+2
+3
+4
+5
+6
+7
+-1
+EOF

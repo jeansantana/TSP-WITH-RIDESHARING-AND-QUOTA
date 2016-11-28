@@ -1,0 +1,1 @@
+time ./METAHEURISTIC ../../instances/paper/experiment/all/TIC10-10-10-3.in 200 10000 0.5 0.5 2 2

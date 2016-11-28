@@ -5,6 +5,8 @@
 #include "GeneticAlgorithm.h"
 #include "../common/MersenneTwister.h"
 #include "../common/Shared.h"
+#include "../../commons/LKHParser.h"
+
 
 
 GeneticAlgorithm::GeneticAlgorithm() {
@@ -158,6 +160,8 @@ int GeneticAlgorithm::getCurrentPopulationSize() {
  * */
 void GeneticAlgorithm::recombination() {
 
+    Shared *shared = Shared::getInstance();
+
     //MersenneTwister * mtr = MersenneTwister::getInstance();
 
     Chromosome parent1, parent2, offspring1, offspring2;
@@ -167,18 +171,33 @@ void GeneticAlgorithm::recombination() {
     parent1 = parents[0];
     parent2 = parents[1];
 
+    /*cout << "\n\nCHOSEN PARENTS: \n";
+    cout << parent1.toString() << endl;
+    cout << parent2.toString() << endl;*/
+
     offspring1 = parent1.reproduce(parent2);
+
     offspring1.mutation(admissibilityLimit);
     offspring1.repair();
 
+    if (shared->getAlgorithmType() == AlgorithmType::MEMETIC) {
+        // Memetic improvment function applied to the offspring before store it in the population
+        localSearch(offspring1);
+    }
+
     population.pb(offspring1);
 
-    Shared *shared = Shared::getInstance();
     if (shared->getGeneticOpearator() == GeneticOperator::RECOMBINATION) {
 
         offspring2 = parent2.reproduce(parent1);
         offspring2.mutation(admissibilityLimit);
         offspring2.repair();
+
+        if (shared->getAlgorithmType() == AlgorithmType::MEMETIC) {
+            // Memetic improvment function applied to the offspring before store it in the population
+            localSearch(offspring1);
+
+        }
 
         population.pb(offspring2);
 
@@ -210,7 +229,7 @@ pair<Solution, Chromosome> GeneticAlgorithm::run() {
     initPopulation();
 
     int numRecombinations = getNumRecombinations();
-    cout << population.size() << endl;
+    //cout << population.size() << endl;
 
     while (!stopCriteria()) {
         FOR (i, numRecombinations) {
@@ -222,5 +241,20 @@ pair<Solution, Chromosome> GeneticAlgorithm::run() {
     }
 
     return getBestSolutionOfPopulation();
+}
+
+void GeneticAlgorithm::localSearch(Chromosome &chromosome) {
+
+    string LKH_PATH = "../../commons/LKH-2.0.7/";
+    string LK_FILES_PATH = "../../commons/LK_FILES/";
+
+    Shared *shared = Shared::getInstance();
+
+    LKHParser parser(LKH_PATH, LK_FILES_PATH, chromosome.getRoute(), shared->getCosts(), "teste_genetico", string("TSP"));
+    vi path = parser.LKHSolution();
+    chromosome.setRoute(path);
+
+    chromosome.repair();
+    //return chromosome;
 }
 

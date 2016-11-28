@@ -165,18 +165,18 @@ int main(int argc, char const *argv[]) {
 
     stringstream sst;
     sst << argv[2];
-    int tamPop; sst >> tamPop; sst.clear();
+    int populationSize; sst >> populationSize; sst.clear();
     sst << argv[3];
-    int num_aval; sst >> num_aval; sst.clear();
+    int numEvaluates; sst >> numEvaluates; sst.clear();
     sst << argv[4];
     double corssoverRate; sst >> corssoverRate; sst.clear();
-    int numCrossovers = (tamPop * corssoverRate) / 2;
     sst << argv[5];
+    // mutatition rate is the admissibility limit
     double mutationRate; sst >> mutationRate; sst.clear();
     sst << argv[6];
-    int algorithmeType; sst >> algorithmeType;
+    int algorithmeType; sst >> algorithmeType; sst.clear();
     sst << argv[7];
-    int geneticOperator; sst >> geneticOperator;
+    int geneticOperator; sst >> geneticOperator; sst.clear();
 
     // não é um parâmetro para o iRace
     /*sst << argv[6];*/
@@ -202,10 +202,27 @@ int main(int argc, char const *argv[]) {
     // setting the costs
     shared->setCosts(costs);
     // setting the algorithm wich is running
-    shared->setAlgorithmType((AlgorithmType) algorithmeType - 1);
+    shared->setAlgorithmType((AlgorithmType) (algorithmeType - 1));
     // setting the agenetic operator wich is used
-    shared->setGeneticOpearator((GeneticOperator) geneticOperator - 1);
+    shared->setGeneticOpearator((GeneticOperator) (geneticOperator - 1));
 
+    GeneticAlgorithm genetic(populationSize, mutationRate, numEvaluates, mutationRate);
+    pair<Solution, Chromosome> sol = genetic.run();
+    cout << sol.first.getCost() << endl;
+
+    /*vi route({0, 3, 1, 4, 9, 7, 2, 5});
+    vi embark({0, 0, 1, 0, 0, 0, 0, 0});
+
+    vi _route({0, 7, 4, 3, 1, 8});
+    vi _embark({1, 0, 1, 0, 0, 0});
+
+    Chromosome a(route, embark);
+    Chromosome b(_route, _embark);
+
+    Chromosome c = a.reproduce(b);
+    cout << c.toString() << endl;*/
+
+    delete(shared);
 
 
     //cout << shared->toString() << endl;

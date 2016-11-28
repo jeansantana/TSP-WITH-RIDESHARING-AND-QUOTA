@@ -79,7 +79,8 @@ void LKHParser::createTSPInstance() {
 vector<int> LKHParser::LKHSolution() {
     this->createTSPInstance();
     // exec the LKH and creates the .tour solution file
-    string cmd = "./" + LKH_PATH + "LKH " + LK_FILES_PATH + this->nameInstance + ".par";
+    // 1> /dev/null put the output on a null dev, all the output is destroied
+    string cmd = "./" + LKH_PATH + "LKH " + LK_FILES_PATH + this->nameInstance + ".par 1> /dev/null";
     int res = system(cmd.c_str());
     // cout << res << endl;
     // now we able to read that file
@@ -100,6 +101,23 @@ vector<int> LKHParser::LKHSolution() {
             tr.push_back(putVal);
             number = "";
         }
+    }
+
+    // do the rotation if needed
+
+    int idxSource = find(tr.begin(), tr.end(), 0) - tr.begin();
+    vector<int> fixedTr;
+    if (idxSource != 0) {
+        // cout << "Rotation needed!\n";
+        for (int i = idxSource; i < tr.size(); ++i) {
+            fixedTr.push_back(i);
+        }
+
+        for (int i = 0; i < idxSource; ++i) {
+            fixedTr.push_back(i);
+        }
+
+        tr = fixedTr;
     }
 
     return tr;

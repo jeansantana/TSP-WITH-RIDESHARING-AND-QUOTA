@@ -107,6 +107,8 @@ void Chromosome::repair() {
 
 Chromosome Chromosome::splitAndRecombineAddUnvisited(Chromosome other) {
 
+    // cout << "Split and Recombine Add Unvisited\n";
+
     int breakPoint = MersenneTwister::getInstance()->getRand(1, size() - 2);
     //breakPoint = 3;
     //cout << "breakPoint: " << breakPoint << endl;
@@ -145,6 +147,18 @@ Chromosome Chromosome::splitAndRecombineAddUnvisited(Chromosome other) {
 
 int Chromosome::getCandidateCity(int p, vi route, vi taken) {
 
+    /*cout << "\n\nGetting the first candidate after " << p << " in:" << endl;
+
+    FOR (i, route.size()) {
+        cout << route[i] << " ";
+    }
+    cout << endl;
+
+    FOR (i, taken.size()) {
+        cout << i << ": " << taken[i] << "; ";
+    }
+    cout << endl;
+    */
     Shared *shared = Shared::getInstance();
 
     int chosen = -1;
@@ -153,6 +167,8 @@ int Chromosome::getCandidateCity(int p, vi route, vi taken) {
 
     if (it != route.end()) {
 
+        // cout << "uashausdhau\n";
+
         for (vi::iterator i = (it + 1); i != route.end(); i++) {
             if (taken[*i] == 0) {
                 chosen = *i;
@@ -160,21 +176,30 @@ int Chromosome::getCandidateCity(int p, vi route, vi taken) {
             }
         }
 
-        if (chosen == -1) {
-            FOR (j, shared->getN()) {
-                if (taken[j] == 0) {
-                    chosen = j;
-                    break;
-                }
+    }
+    // if anyone was chosen we have to search some city that wasn't visited yet
+    if (chosen == -1) {
+        //cout << "UASHUSHAUSHAUSH\n";
+        FOR (j, shared->getN()) {
+            if ( taken[j] == 0 && find(route.begin(), route.end(), j) != route.end() ) {
+                chosen = j;
+                break;
             }
         }
-
     }
+
+    // cout << "Chosen one: " << chosen << endl;
 
     return chosen;
 }
 
 Chromosome Chromosome::sequentialConstrutiveCrossover(Chromosome other) {
+
+    // cout << "Sequential Construtive Crossover\n";
+
+    /*cout << "\n\nPARENTS: \n";
+    cout << this->toString() << endl;
+    cout << other.toString() << endl;*/
 
     Shared *shared = Shared::getInstance();
 
@@ -204,6 +229,9 @@ Chromosome Chromosome::sequentialConstrutiveCrossover(Chromosome other) {
             c1 = c1 * c2 * -1;
             c2 = c1;
         }
+
+        // cout << "P: " << p << " C1: " << c1 << " C2: " << c2 << endl;
+
         int brdBit = 0; // Boarding indicator for the inserted p
         // next p
         if (costs[p][c1] <= costs[p][c2]) {
@@ -220,15 +248,32 @@ Chromosome Chromosome::sequentialConstrutiveCrossover(Chromosome other) {
             }
         }
 
+        // cout << "ESSE É O P: " << p << endl;
+
         taken[p] = 1;
         _route.pb(p);
         _boarding.pb(brdBit);
     }
 
+
+    /*cout << "OFFSPRING:\n";
+    FOR(i, _route.size()) {
+        cout << _route[i] << " ";
+    }
+    cout << endl;
+    FOR(i, _boarding.size()) {
+        cout << _boarding[i] << " ";
+    }
+    cout << endl;*/
+
     return Chromosome(_route, _boarding);
 }
 
 Chromosome Chromosome::sequentialConstrutiveCrossoverBased(Chromosome other) {
+
+    /*cout << "\n\nPARENTS: \n";
+    cout << this->toString() << endl;
+    cout << other.toString() << endl;*/
 
     Shared *shared = Shared::getInstance();
 
@@ -290,7 +335,7 @@ Chromosome Chromosome::sequentialConstrutiveCrossoverBased(Chromosome other) {
 
         // cout << "copy from p2\n";
 
-        FORR (i, idx, _routeOther.size()) {
+        FORR (i, idx + 1, _routeOther.size()) {
 
             int rVal = -1, bVal = 0;
 
@@ -307,7 +352,7 @@ Chromosome Chromosome::sequentialConstrutiveCrossoverBased(Chromosome other) {
 
         // cout << "copy from p1\n";
 
-        FORR (i, idx, route.size()) {
+        FORR (i, idx + 1, route.size()) {
 
             int rVal = -1, bVal = 0;
 
@@ -337,6 +382,16 @@ Chromosome Chromosome::sequentialConstrutiveCrossoverBased(Chromosome other) {
             }
         }
     }
+
+    /*cout << "Check debug:\n";
+    FOR(i, _route.size()) {
+        cout << _route[i] << " ";
+    }
+    cout << endl;
+    FOR(i, _boarding.size()) {
+        cout << _boarding[i] << " ";
+    }
+    cout << endl;*/
 
     return Chromosome(_route, _boarding);
 }

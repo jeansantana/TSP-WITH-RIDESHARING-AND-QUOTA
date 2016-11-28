@@ -20,6 +20,8 @@ private:
     int maxEvaluations;
     // to calculate the number of recombination
     double recombinationRate;
+    // Local search for the Memetic Algorithme
+    void localSearch(Chromosome &chromosome);
 
 public:
     GeneticAlgorithm();
