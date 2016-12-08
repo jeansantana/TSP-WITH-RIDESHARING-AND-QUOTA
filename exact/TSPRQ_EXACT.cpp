@@ -392,7 +392,7 @@ int main(int argc, char const *argv[]) {
 	    FOR(l, p) {
 	        FOR(i, n) {
 	            FOR(j, n) {
-	                if (i != j && v[l][i][j].get(GRB_DoubleAttr_X) == 1) {
+	                if (i != j && v[l][i][j].get(GRB_DoubleAttr_X) != 0) {
 	                	// cout << l << "_" << i << "_" << j << endl;
 	                	emb[ mapRoute[l] ] = 1;
 	                }
