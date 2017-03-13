@@ -37,11 +37,17 @@ The genetic and memectic algorithms are in the folder metaheuristics. There we h
 5. Crossover rate
 6. Global mutation rate
 7. Algorithm type:
-	7.1 - 1 to use Genetic Algorithm;
-	7.2 - 2 to use Memetic Algorithm;
+	
+	7.1 - 1 to use Genetic Algorithm
+	
+	7.2 - 2 to use Memetic Algorithm
+
 8. Genetic operator for crossover/recombination:
+
 	8.1 - 1 to use split and recombiantion operator
+
 	8.2 - 2 to use the SCX operator
+
 	8.3 - 3 to user the SCX based operator
 	
 Example: `./executable instances/big.in 100 200 0.5 0.6 20 1 1`
