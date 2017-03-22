@@ -1,0 +1,5 @@
+# name		switch		     type	values			[conditions (using R syntax)]
+populacao       ""            i		(100, 1000)
+numavaliacoes   ""            i  	(100000, 2000000)
+taxacuzamento   ""            r  	(0.00, 1.00)
+taxamutcao      ""            r  	(0.00, 1.00)

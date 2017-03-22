@@ -3,7 +3,7 @@ project(MATHEURISTIC)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 
-set(SOURCE_FILES MATHEURISTIC.cpp ../commons/LKHParser.h ../commons/LKHParser.cpp ../commons/FileHelper.h ../commons/FileHelper.cpp)
+set(SOURCE_FILES MATHEURISTIC.cpp ../commons/LKHParser.h ../commons/LKHParser.cpp ../commons/FileHelper.h ../commons/FileHelper.cpp ../commons/Utils.h ../metaheuristics/common/MersenneTwister.h ../metaheuristics/common/MersenneTwister.cpp)
 add_executable(MATHEURISTIC.run ${SOURCE_FILES})
 
 if (GUROBI_INCLUDE_DIR)

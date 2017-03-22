@@ -30,24 +30,30 @@ This algorithm uses LKH 2.0.7 by Helsgaun, a Lin-Kernighan Traveling Salesman He
 
 The genetic and memectic algorithms are in the folder metaheuristics. There we have a `main.cpp` file. To compile we have to go to the `build` folder and run `cmake ..` and then `make`. After tha we have an executable file called `METAHEURISTIC` and we can run it. This executable have some parameters:
 
+
 1. Entry file
-2. Params to run:
-3. Population Size
-4. Number of avaliations
-5. Crossover rate
-6. Global mutation rate
-7. Algorithm type:
+
+2. Population Size
+
+3. Number of avaliations
+
+4. Crossover rate
+
+5. Global mutation rate
+
+6. Algorithm type:
+
+         6.1 - 1 to use Genetic Algorithm;
+         
+         6.2 - 2 to use Memetic Algorithm;
+         
+7. Genetic operator for crossover/recombination:
+
+         7.1 - 1 to use split and recombiantion operator
+         
+         7.2 - 2 to use the SCX operator
+         
+         7.3 - 3 to user the SCX based operator
+         
 	
-	7.1 - 1 to use Genetic Algorithm
-	
-	7.2 - 2 to use Memetic Algorithm
-
-8. Genetic operator for crossover/recombination:
-
-	8.1 - 1 to use split and recombiantion operator
-
-	8.2 - 2 to use the SCX operator
-
-	8.3 - 3 to user the SCX based operator
-	
-Example: `./executable instances/big.in 100 200 0.5 0.6 20 1 1`
+Example: `./executable instances/big.in 100 200 0.5 0.6 1 1`

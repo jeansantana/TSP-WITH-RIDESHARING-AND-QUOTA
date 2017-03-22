@@ -1,0 +1,8 @@
+Solution:
+0 8 3 7 5 6 
+0 0 1 1 0 0 
+Cost: 747.5
+Lower Bound: 747.5
+Time: 0.03
+
+Process Time: 0.05

@@ -195,7 +195,7 @@ int main(int argc, char const *argv[]) {
 	 	FORR(j, 1, n) {
 	 		FORR(i, 1, n) {
 	 			if (i != j) {
-	 				expr = u[i] - u[j] + (n - 1) * x[i][j];
+	 				expr = u[i] - u[j] + (n - 1) * x[i][j]; // + (n - 3) * x[j][i]
 					model.addConstr(expr <= n - 2, "c6_" + to_string(i) + to_string(j)); 
 	 			}
 	 		}

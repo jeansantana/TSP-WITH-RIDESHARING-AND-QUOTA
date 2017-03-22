@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 #include "gurobi_c++.h"
 #include "../commons/LKHParser.h"
+#include "../metaheuristics/common/MersenneTwister.h"
+#include "../commons/Utils.h"
 
 using namespace std;
 
@@ -23,13 +25,18 @@ int min_bonus; // minimum bonus quota
 int bonus[1000]; // bonus list
 int start = 0; // start vertex
 
+// storage
+vi costs;
+vi times;
+vi lowerbds;
+
 const string LKH_PATH = "../commons/LKH-2.0.7/";
 const string LK_FILES_PATH = "../commons/LK_FILES/";
 
 GRBEnv env = GRBEnv();
 GRBModel model = GRBModel(env);
 
-void heuristic(string filename);
+void heuristic(string filename, int n, int p, int r);
 
 int main(int argc, char const *argv[]) {
 	
@@ -37,18 +44,8 @@ int main(int argc, char const *argv[]) {
 	unused = freopen (argv[1], "r", stdin);
 
 	FileHelper fileHelper;
+	// reading file
 	string filename = fileHelper.getFileNameFromPath( string(argv[1]) );
-	
-	heuristic(filename);
-	
-	return 0;
-}
-
-bool bonusCmp (ii b1, ii b2) {
-	return b1.second >= b2.second; 
-}
-
-void heuristic(string filename) {
 
 	int n, p, r;
 
@@ -85,6 +82,93 @@ void heuristic(string filename) {
 
 	// start city
 	bonus[start] = 0;
+	
+	heuristic(filename, n, p, r);
+	
+	return 0;
+}
+
+int compareCity(ii a, ii b) {
+    return a.first - b.first;
+}
+
+int _compare(const void* a, const void* b) {
+	return *(int*) a - *(int*) b;
+}
+
+bool bonusCmp(ii b1, ii b2) {
+	// return b1.second >= b2.second;
+	return b1.second <= b2.second;
+
+}
+
+int findCity(ii cityBonus, vii citiesBonus) {
+    int found = -1;
+    for (int i = 0; i < citiesBonus.size() && found == -1; i++) {
+        if ( compareCity(cityBonus, citiesBonus[i]) == 0 ) {
+            found = i;
+        }
+    }
+    return found;
+}
+
+// for debug
+void print_vii(vii v) {
+	cout << "Vector (city, bonus): \n";
+	for (int i = 0; i < v.size(); ++i) {
+		cout << i << " - (" << v[i].first << ", " << v[i].second << ")" << endl;
+	}
+	cout << endl;
+}
+
+// return the positions of the chosen city
+int roullete(vii B) {
+	
+	double totalSum = 0.0;
+	
+	for (int i = 0; i < B.size(); i++) {
+		totalSum+= B[i].second;
+	}
+
+	vd sum;
+	sum.push_back( (double) B[0].second / totalSum );
+
+	for (int i = 1; i < B.size(); i++) {
+		sum.push_back( (double) (sum[i - 1] + B[i].second) / totalSum );
+	}
+
+	double guess = (double) MersenneTwister::getInstance()->getRand(1, MAX_VALUE_PROB)/MAX_VALUE_PROB;
+
+    return utils::binarySearch(guess, sum, _compare);
+
+}
+
+bool removeCity(vii &B, ii cityBonus) {
+	int idx = findCity(cityBonus, B);
+    if (idx >= 0 && idx < B.size()) {
+        B.erase(B.begin() + idx);
+        return true;
+    }
+    return false;
+}
+
+vi semiGreedyRoute(vii B, int bonusTarget) {
+	vi route;
+	route.pb(0);
+	int currBonus = 0;
+	
+	while (currBonus < bonusTarget) {
+		int chosenOne = roullete(B);
+		route.pb(B[chosenOne].first);
+		//print_vii(B);
+		currBonus+= B[chosenOne].second;
+		removeCity(B, B[chosenOne]);
+	}
+
+	return route;
+}
+
+void heuristic(string filename, int n, int p, int r) {
 
 	try {
     	// definindo as vars
@@ -122,10 +206,10 @@ void heuristic(string filename) {
 		// Vertices greedy selection to build path
 
 		vi gvertices;
-		gvertices.pb(0);
+		//gvertices.pb(0);
 
 		vii B; // (city c id, bonus to be collected in city c)
-		FOR (i, n) {
+		FORR (i, 1, n) {
 			B.pb( ii(i, bonus[i]) );
 		}
 
@@ -133,10 +217,14 @@ void heuristic(string filename) {
 		FOR (i, n) {
 			cout << B[i].first << ", " << B[i].second << endl;
 		}*/
-
+		//print_vii(B);
 		sort(B.begin(), B.end(), bonusCmp);
+		//print_vii(B);
+		//cout << "Start here: \n";
+		gvertices = semiGreedyRoute(B, min_bonus);
 
-		int totalBonus = 0;
+
+		/*int totalBonus = 0;
 		FOR(i, B.size()) {
 			if (totalBonus < min_bonus) {
 				if (B[i].first != 0) {
@@ -146,7 +234,7 @@ void heuristic(string filename) {
 			} else {
 				break;
 			}
-		}
+		}*/
 
 		/*cout << "VERTICES SET:\n";
 		FOR(i, gvertices.size()) {
@@ -282,9 +370,11 @@ void heuristic(string filename) {
 
 	 	model.setObjective(foExpr, GRB_MINIMIZE);
 
+	 	model.getEnv().set(GRB_IntParam_OutputFlag, 0);
+
 	 	model.optimize();
 		
-		cout << "\nSolution:\n";
+		cout << "Solution:\n";
 
 	 	FOR(i, path.size()) {
 	 		cout << path[i] << " ";
@@ -318,10 +408,13 @@ void heuristic(string filename) {
     	}
     	cout << endl;
 
-    	cout << "\nCost: " << model.get(GRB_DoubleAttr_ObjVal) << endl;
+    	cout << "Cost: " << model.get(GRB_DoubleAttr_ObjVal) << endl;
 
     	// cout << "Upper Bound: " << model.get(GRB_DoubleAttr_UB) << endl;
 		cout << "Lower Bound: " << model.get(GRB_DoubleAttr_ObjBound) << endl;
+
+		// cout << "Time: " << model.get(GRB_DoubleAttr_Runtime) << endl;
+		printf("Time: %.2f\n", model.get(GRB_DoubleAttr_Runtime));
 
 	} catch (GRBException e) {
     	cout << "Error code = " << e.getErrorCode() << endl;

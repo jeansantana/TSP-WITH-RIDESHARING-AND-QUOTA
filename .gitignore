@@ -161,3 +161,5 @@ fabric.properties
 # folders
 metaheuristics/build
 codemeta/
+metaheuristics/cmake-build-debug/
+tsp-pq-irace/

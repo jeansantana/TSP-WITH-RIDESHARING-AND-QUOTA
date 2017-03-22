@@ -1,0 +1,3 @@
+PROBLEM_FILE = ../commons/LK_FILES/TIC16-30-30-4.tsp
+RUNS = 10
+TOUR_FILE = ../commons/LK_FILES/TIC16-30-30-4.tour

@@ -2,20 +2,19 @@
  * @author Jean Silva
  * How to use the program: We have this parameters to be informed at the execution
  * 1. Entry file
- * 2. Params to run:
- * 3. Population Size
- * 4. Number of avaliations
- * 5. Crossover rate
- * 6. Global mutation rate
- * 7. Algorithm type:
- *          7.1 - 1 to use Genetic Algorithm;
- *          7.2 - 2 to use Memetic Algorithm;
- * 8. Genetic operator for crossover/recombination:
- *          8.1 - 1 to use split and recombiantion operator
- *          8.2 - 2 to use the SCX operator
- *          8.3 - 3 to user the SCX based operator
+ * 2. Population Size
+ * 3. Number of avaliations
+ * 4. Crossover rate
+ * 5. Global mutation rate
+ * 6. Algorithm type:
+ *          6.1 - 1 to use Genetic Algorithm;
+ *          6.2 - 2 to use Memetic Algorithm;
+ * 7. Genetic operator for crossover/recombination:
+ *          7.1 - 1 to use split and recombiantion operator
+ *          7.2 - 2 to use the SCX operator
+ *          7.3 - 3 to user the SCX based operator
  *
- * Example: ./executable instances/big.in 100 200 0.5 0.6 20 1 1
+ * Example: ./executable instances/big.in 100 200 0.5 0.6 1 1
  */
 
 
@@ -205,6 +204,8 @@ int main(int argc, char const *argv[]) {
     shared->setAlgorithmType((AlgorithmType) (algorithmeType - 1));
     // setting the agenetic operator wich is used
     shared->setGeneticOpearator((GeneticOperator) (geneticOperator - 1));
+
+    cout << "file name: " << argv[0] << endl;
 
     GeneticAlgorithm genetic(populationSize, mutationRate, numEvaluates, mutationRate);
     pair<Solution, Chromosome> sol = genetic.run();

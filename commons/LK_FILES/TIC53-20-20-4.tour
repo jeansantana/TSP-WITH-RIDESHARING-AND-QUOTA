@@ -1,0 +1,17 @@
+NAME : TIC53-20-20-4.1433.tour
+COMMENT : Length = 1433
+COMMENT : Found by LKH [Keld Helsgaun] Thu Dec 15 16:56:57 2016
+TYPE : TOUR
+DIMENSION : 9
+TOUR_SECTION
+1
+6
+3
+4
+5
+2
+9
+8
+7
+-1
+EOF

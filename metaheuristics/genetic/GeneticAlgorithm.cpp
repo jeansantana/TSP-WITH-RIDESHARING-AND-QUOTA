@@ -119,18 +119,25 @@ int GeneticAlgorithm::roulletSelectOne(vd roullet) {
     return binarySearch(guess, roullet);
 
 }
-
+// roulette
 vector<Chromosome> GeneticAlgorithm::selection(int nInds) {
 
     vector<Chromosome> selects;
+
+    // Total sum of individuals' fitness of the population
+    double totalSum = 0.0;
+    FOR(i, population.size()) {
+        totalSum+= 1.0 / population[i].fitness().getCost();
+    }
+
     // sum vector of fitness values of population
     vd sum;
     double fit = 1.0 / population[0].fitness().getCost();
-    sum.pb(fit);
+    sum.pb(fit/totalSum);
 
     FORR(i, 1, population.size()) {
         fit = 1.0 / population[i].fitness().getCost() + sum[i - 1];
-        sum.pb(fit);
+        sum.pb(fit/totalSum);
     }
 
     FOR(i, nInds) {

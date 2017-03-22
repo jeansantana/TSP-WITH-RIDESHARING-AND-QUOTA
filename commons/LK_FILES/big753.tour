@@ -1,11 +1,13 @@
-NAME : big753.15.tour
-COMMENT : Length = 15
-COMMENT : Found by LKH [Keld Helsgaun] Mon Nov 28 16:03:42 2016
+NAME : big753.19.tour
+COMMENT : Length = 19
+COMMENT : Found by LKH [Keld Helsgaun] Mon Dec 12 16:54:14 2016
 TYPE : TOUR
-DIMENSION : 3
+DIMENSION : 5
 TOUR_SECTION
 1
 2
+4
+5
 3
 -1
 EOF
