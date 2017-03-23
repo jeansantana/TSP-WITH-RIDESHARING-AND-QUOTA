@@ -16,7 +16,7 @@
 # This script should print one numerical value: the cost that must be minimized.
 # Exit with 0 if no error, with 1 in case of error
 ###############################################################################
-EXE=~/Dropbox/Mestrado/TSP-WITH-RIDESHARING-AND-QUOTA/metaheuristics/build/METAHEURISTIC
+EXE=../../metaheuristics/build/METAHEURISTIC
 FIXED_PARAMS="1 1"
 
 CONFIG_ID=$1
