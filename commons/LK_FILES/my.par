@@ -1,3 +1,0 @@
-PROBLEM_FILE = LK_FILES/my.tsp
-RUNS = 10
-TOUR_FILE = teste.tour

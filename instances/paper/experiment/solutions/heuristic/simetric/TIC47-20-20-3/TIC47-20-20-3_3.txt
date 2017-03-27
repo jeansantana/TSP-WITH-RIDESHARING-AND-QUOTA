@@ -1,0 +1,8 @@
+Solution:
+0 15 3 4 7 8 1 11 19 6 10 18 16 
+1 0 0 0 0 0 0 0 0 1 0 0 0 
+Cost: 1060
+Lower Bound: 1060
+Time: 0.02
+
+Process Time: 0.06

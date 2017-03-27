@@ -1,5 +1,18 @@
 #include "LKHParser.h"
 
+/**
+* Parser for using the LKH (Lin-Kernighan heuristic) 2.0.7 by Keld Helsgaun 
+* http://webhotel4.ruc.dk/~keld/research/LKH/
+* This class converts the set of vertices and yours weight respectively in a .tsp file
+* and creates a .par file (entry file for the LKH) too
+*
+* @param LKH_PATH Path to LKH executable
+* @param LK_FILES_PATH were the .tsp will be stored
+* @param set The set of vertices
+* @param costs The costs to each vertices on set
+* @param nameInstance Instace name
+* @param tspType Entry file extension, for instance ".tsp" is identified as "TSP" according to the TSP lib
+*/
 LKHParser::LKHParser(string LKH_PATH, string LK_FILES_PATH, vector<int> set, vector < vector<double> > costs, string nameInstance, string tspType) {
     this->set = set;
     this->nameInstance = nameInstance;
@@ -66,13 +79,13 @@ void LKHParser::createTSPInstance() {
 vector<int> LKHParser::LKHSolution() {
     this->createTSPInstance();
     // exec the LKH and creates the .tour solution file
-    string cmd = "./" + LKH_PATH + "LKH " + LK_FILES_PATH + this->nameInstance + ".par";
+    // 1> /dev/null put the output on a null dev, all the output is destroied
+    string cmd = "./" + LKH_PATH + "LKH " + LK_FILES_PATH + this->nameInstance + ".par 1> /dev/null";
     int res = system(cmd.c_str());
     // cout << res << endl;
     // now we able to read that file
     FileHelper fhelper;
     string tour = fhelper.readFile(LK_FILES_PATH + this->nameInstance + ".tour");
-
     vector<int> tr;
 
     int begin = tour.find("TOUR_SECTION") + string("TOUR_SECTION").size() + 1;
@@ -88,6 +101,23 @@ vector<int> LKHParser::LKHSolution() {
             tr.push_back(putVal);
             number = "";
         }
+    }
+
+    // do the rotation if needed
+
+    int idxSource = find(tr.begin(), tr.end(), 0) - tr.begin();
+    vector<int> fixedTr;
+    if (idxSource != 0) {
+        // cout << "Rotation needed!\n";
+        for (int i = idxSource; i < tr.size(); ++i) {
+            fixedTr.push_back(i);
+        }
+
+        for (int i = 0; i < idxSource; ++i) {
+            fixedTr.push_back(i);
+        }
+
+        tr = fixedTr;
     }
 
     return tr;

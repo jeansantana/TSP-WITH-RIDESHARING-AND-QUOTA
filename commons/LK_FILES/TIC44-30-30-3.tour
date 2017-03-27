@@ -1,0 +1,25 @@
+NAME : TIC44-30-30-3.1882.tour
+COMMENT : Length = 1882
+COMMENT : Found by LKH [Keld Helsgaun] Thu Dec 15 16:56:48 2016
+TYPE : TOUR
+DIMENSION : 17
+TOUR_SECTION
+1
+3
+2
+12
+8
+9
+6
+4
+15
+5
+16
+14
+10
+7
+11
+13
+17
+-1
+EOF

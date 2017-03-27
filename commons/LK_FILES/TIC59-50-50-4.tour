@@ -1,0 +1,33 @@
+NAME : TIC59-50-50-4.2204.tour
+COMMENT : Length = 2204
+COMMENT : Found by LKH [Keld Helsgaun] Thu Dec 15 16:57:07 2016
+TYPE : TOUR
+DIMENSION : 25
+TOUR_SECTION
+1
+8
+11
+7
+6
+10
+18
+3
+9
+16
+20
+22
+17
+25
+21
+5
+4
+23
+24
+15
+2
+14
+13
+19
+12
+-1
+EOF
