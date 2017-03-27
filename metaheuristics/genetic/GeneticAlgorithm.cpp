@@ -273,8 +273,10 @@ void GeneticAlgorithm::linKernighan(Chromosome &chromosome) {
     string LK_FILES_PATH = "../../commons/LK_FILES/";
 
     Shared *shared = Shared::getInstance();
-
-    LKHParser parser(LKH_PATH, LK_FILES_PATH, chromosome.getRoute(), shared->getCosts(), "teste_genetico", string("TSP"));
+    unsigned int time = chrono::system_clock::now().time_since_epoch().count();
+    string fileName = "metaheustic_" + to_string(getpid()) + "_" + to_string(time);
+    // cout << fileName << endl;
+    LKHParser parser(LKH_PATH, LK_FILES_PATH, chromosome.getRoute(), shared->getCosts(), fileName, string("TSP"));
     vi path = parser.LKHSolution();
     chromosome.setRoute(path);
 

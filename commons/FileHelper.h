@@ -13,6 +13,7 @@ public:
     void createFile(string name, string content, string path);
     string readFile(string path);
     string getFileNameFromPath(string path);
+    void deleteFile(string path);
 };
 
 #endif // FILE_HELPER_H
