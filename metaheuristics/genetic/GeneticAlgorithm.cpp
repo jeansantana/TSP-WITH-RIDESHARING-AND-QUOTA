@@ -225,6 +225,11 @@ pair<Solution, Chromosome> GeneticAlgorithm::getBestSolutionOfPopulation() {
         }
     }
 
+    /*cout << "POPULATION\n";
+    for (int i = 0; i < population.size(); ++i) {
+        cout << population[i].fitness().getCost() << endl;
+    }*/
+
     return pair<Solution, Chromosome>(sbest, cbest);
 
 }
@@ -254,7 +259,9 @@ void GeneticAlgorithm::localSearch(Chromosome &chromosome) {
     Shared *shared = Shared::getInstance();
     if (shared->getInstanceType() == InstanceType::ASSIMETRIC) {
         // cout << "Assimetric using 2-opt\n";
+        // cout << "===============\nBEFORE: " << chromosome.fitness().getCost() << endl;
         localSearch2Opt(chromosome);
+        // cout << "AFTER: " << chromosome.fitness().getCost() << "\n=================\n\n";
     } else {
         // cout << "Simetric using LKH\n";
         linKernighan(chromosome);
