@@ -102,6 +102,17 @@ void assignPCVPQ(string name) {
     shared->setBonuses(bns);
 }
 
+bool isSimetric(vvd costs) {
+    for (int i = 0; i < costs.size(); ++i) {
+        for (int j = i + 1; j < costs.size(); ++j) {
+            if (costs[i][j] != costs[j][i]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 int main(int argc, char const *argv[]) {
 
     // read instance
@@ -211,6 +222,16 @@ int main(int argc, char const *argv[]) {
     shared->setGeneticOpearator((GeneticOperator) (geneticOperator - 1));
     // setting the instance type (1 - SIMETRIC or 2 - ASSIMETRIC)
     shared->setInstanceType((InstanceType) (instanceType - 1));
+
+    // only for irace tuning
+
+    if (isSimetric(costs)) {
+        shared->setInstanceType(InstanceType::SIMETRIC);
+        // cout << shared->getInstanceType() << " - SIMETRIC\n";
+    } else {
+        shared->setInstanceType(InstanceType::ASSIMETRIC);
+        // cout << shared->getInstanceType() << " - ASSIMETRIC\n";
+    }
 
     // cout << "file name: " << argv[0] << endl;
 
