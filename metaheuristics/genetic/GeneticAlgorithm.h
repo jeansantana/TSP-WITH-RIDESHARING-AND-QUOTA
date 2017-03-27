@@ -22,6 +22,11 @@ private:
     double recombinationRate;
     // Local search for the Memetic Algorithme
     void localSearch(Chromosome &chromosome);
+    // Lin–Kernighan heuristic
+    void linKernighan(Chromosome &chromosome);
+    // 2-opt heusristic
+    void localSearch2Opt(Chromosome &chromosome);
+    Chromosome twoOpt(Chromosome chromosome, int i, int k);
 
 public:
     GeneticAlgorithm();

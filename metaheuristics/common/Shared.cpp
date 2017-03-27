@@ -130,4 +130,10 @@ void Shared::setGeneticOpearator(GeneticOperator geneticOpearator) {
     Shared::geneticOpearator = geneticOpearator;
 }
 
+InstanceType Shared::getInstanceType() const {
+    return instanceType;
+}
 
+void Shared::setInstanceType(InstanceType instanceType) {
+    Shared::instanceType = instanceType;
+}

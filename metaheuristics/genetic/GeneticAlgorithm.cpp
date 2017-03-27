@@ -251,7 +251,17 @@ pair<Solution, Chromosome> GeneticAlgorithm::run() {
 }
 
 void GeneticAlgorithm::localSearch(Chromosome &chromosome) {
+    Shared *shared = Shared::getInstance();
+    if (shared->getInstanceType() == InstanceType::ASSIMETRIC) {
+        // cout << "Assimetric using 2-opt\n";
+        localSearch2Opt(chromosome);
+    } else {
+        // cout << "Simetric using LKH\n";
+        linKernighan(chromosome);
+    }
+}
 
+void GeneticAlgorithm::linKernighan(Chromosome &chromosome) {
     string LKH_PATH = "../../commons/LKH-2.0.7/";
     string LK_FILES_PATH = "../../commons/LK_FILES/";
 
@@ -262,6 +272,28 @@ void GeneticAlgorithm::localSearch(Chromosome &chromosome) {
     chromosome.setRoute(path);
 
     chromosome.repair();
-    //return chromosome;
 }
 
+void GeneticAlgorithm::localSearch2Opt(Chromosome &chromosome) {
+    for (int i = 0; i < chromosome.getRoute().size(); ++i) {
+        for (int k = i + 1; k < chromosome.getRoute().size(); ++k) {
+            Chromosome candidate = twoOpt(chromosome, i, k);
+            if (candidate.fitness() < chromosome.fitness()) {
+                chromosome = candidate;
+            }
+        }
+    }
+}
+
+Chromosome GeneticAlgorithm::twoOpt(Chromosome chromosome, int i, int k) {
+    vector<int> route = chromosome.getRoute();
+    vector<int> boarding = chromosome.getBoarding();
+    reverse(route.begin() + i, route.begin() + k);
+    reverse(boarding.begin() + i, boarding.begin() + k);
+
+    chromosome.setRoute(route);
+    chromosome.setBoarding(boarding);
+
+    chromosome.repair();
+    return chromosome;
+}

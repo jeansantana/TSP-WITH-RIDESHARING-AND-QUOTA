@@ -13,8 +13,11 @@
  *          7.1 - 1 to use split and recombiantion operator
  *          7.2 - 2 to use the SCX operator
  *          7.3 - 3 to user the SCX based operator
+ * 8. Instance type
+ *          8.1 - 1 to indicate that the instance is SIMETRIC (local search used: Lin Kernighan)
+ *          8.2 - 2 to indicate that the instance is ASSIMETRIC (local search used: 2-opt)
  *
- * Example: ./executable instances/big.in 100 200 0.5 0.6 1 1
+ * Example: ./executable instances/big.in 100 200 0.5 0.6 1 1 1
  */
 
 
@@ -176,6 +179,8 @@ int main(int argc, char const *argv[]) {
     int algorithmeType; sst >> algorithmeType; sst.clear();
     sst << argv[7];
     int geneticOperator; sst >> geneticOperator; sst.clear();
+    sst << argv[8];
+    int instanceType; sst >> instanceType; sst.clear();
 
     // não é um parâmetro para o iRace
     /*sst << argv[6];*/
@@ -204,8 +209,10 @@ int main(int argc, char const *argv[]) {
     shared->setAlgorithmType((AlgorithmType) (algorithmeType - 1));
     // setting the agenetic operator wich is used
     shared->setGeneticOpearator((GeneticOperator) (geneticOperator - 1));
+    // setting the instance type (1 - SIMETRIC or 2 - ASSIMETRIC)
+    shared->setInstanceType((InstanceType) (instanceType - 1));
 
-    cout << "file name: " << argv[0] << endl;
+    // cout << "file name: " << argv[0] << endl;
 
     GeneticAlgorithm genetic(populationSize, mutationRate, numEvaluates, mutationRate);
     pair<Solution, Chromosome> sol = genetic.run();

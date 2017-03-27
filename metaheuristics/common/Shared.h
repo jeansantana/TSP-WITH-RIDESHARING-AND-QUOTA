@@ -36,6 +36,9 @@ private:
     AlgorithmType algorithmType;
     // Implies which crossover operation have to be used
     GeneticOperator geneticOpearator;
+    // Instance type
+    InstanceType instanceType;
+
 public:
     AlgorithmType getAlgorithmType() const;
 
@@ -44,8 +47,6 @@ public:
     GeneticOperator getGeneticOpearator() const;
 
     void setGeneticOpearator(GeneticOperator geneticOpearator);
-
-public:
 
     static Shared * getInstance();
 
@@ -86,6 +87,10 @@ public:
     void setEvaluations(int evaluations);
 
     void incrementEvaluations();
+
+    InstanceType getInstanceType() const;
+
+    void setInstanceType(InstanceType instanceType);
 
     string toString();
 

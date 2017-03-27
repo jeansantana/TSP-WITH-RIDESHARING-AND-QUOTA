@@ -1,13 +1,12 @@
-NAME : teste_genetico.1168.tour
-COMMENT : Length = 1168
-COMMENT : Found by LKH [Keld Helsgaun] Wed Mar 22 11:16:12 2017
+NAME : teste_genetico.19.tour
+COMMENT : Length = 19
+COMMENT : Found by LKH [Keld Helsgaun] Mon Mar 27 14:22:11 2017
 TYPE : TOUR
-DIMENSION : 5
+DIMENSION : 4
 TOUR_SECTION
 1
 2
-4
 3
-5
+4
 -1
 EOF

@@ -41,5 +41,7 @@ typedef std::mt19937 mt;
 enum AlgorithmType { GENETIC, MEMETIC };
 // Crossover/Recombination operation type
 enum GeneticOperator { RECOMBINATION, SCX_ADP, SCX_BASED_ADP };
+// Instance type
+enum InstanceType { SIMETRIC, ASSIMETRIC };
 
 #endif //TSPRQ_MACROS_H_H
