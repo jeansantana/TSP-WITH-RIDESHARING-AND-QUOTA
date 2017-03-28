@@ -225,13 +225,13 @@ int main(int argc, char const *argv[]) {
 
     // only for irace tuning
 
-    if (isSimetric(costs)) {
+    /*if (isSimetric(costs)) {
         shared->setInstanceType(InstanceType::SIMETRIC);
         // cout << shared->getInstanceType() << " - SIMETRIC\n";
     } else {
         shared->setInstanceType(InstanceType::ASSIMETRIC);
         // cout << shared->getInstanceType() << " - ASSIMETRIC\n";
-    }
+    }*/
 
     // cout << "file name: " << argv[0] << endl;
 
