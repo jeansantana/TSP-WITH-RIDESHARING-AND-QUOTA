@@ -17,7 +17,7 @@
 # Exit with 0 if no error, with 1 in case of error
 ###############################################################################
 EXE=../../metaheuristics/build/METAHEURISTIC
-FIXED_PARAMS="1 1"
+FIXED_PARAMS="1 1 1"
 
 CONFIG_ID=$1
 INSTANCE_ID=$2

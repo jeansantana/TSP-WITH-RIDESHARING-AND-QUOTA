@@ -57,6 +57,7 @@ The genetic and memectic algorithms are in the folder metaheuristics. There we h
 8. Instance Type
 	
 	8.1 - 1 to SIMETRIC
+	
 	8.2 - 2 to ASSSIMETRIC
 	
 Example: `./executable instances/big.in 100 200 0.5 0.6 1 1 1`
