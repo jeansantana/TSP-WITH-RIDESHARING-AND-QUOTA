@@ -38,3 +38,8 @@ string FileHelper::getFileNameFromPath(string path) {
 
     return filename;
 }
+
+void FileHelper::deleteFile(string path) {
+    if( remove(path.c_str()) != 0 )
+        perror("Error deleting file");
+}

@@ -120,6 +120,10 @@ vector<int> LKHParser::LKHSolution() {
         tr = fixedTr;
     }
 
+    fhelper.deleteFile(LK_FILES_PATH + this->nameInstance + ".tour");
+    fhelper.deleteFile(LK_FILES_PATH + this->nameInstance + ".par");
+    fhelper.deleteFile(LK_FILES_PATH + this->nameInstance + ".tsp");
+
     return tr;
 
 }

@@ -43,17 +43,21 @@ The genetic and memectic algorithms are in the folder metaheuristics. There we h
 
 6. Algorithm type:
 
-         6.1 - 1 to use Genetic Algorithm;
-         
-         6.2 - 2 to use Memetic Algorithm;
+	6.1 - 1 to use Genetic Algorithm;
+
+	6.2 - 2 to use Memetic Algorithm;
          
 7. Genetic operator for crossover/recombination:
 
-         7.1 - 1 to use split and recombiantion operator
-         
-         7.2 - 2 to use the SCX operator
-         
-         7.3 - 3 to user the SCX based operator
-         
+	7.1 - 1 to use split and recombiantion operator
+
+	7.2 - 2 to use the SCX operator
+
+	7.3 - 3 to user the SCX based operator
+8. Instance Type
 	
-Example: `./executable instances/big.in 100 200 0.5 0.6 1 1`
+	8.1 - 1 to SIMETRIC
+	
+	8.2 - 2 to ASSSIMETRIC
+	
+Example: `./executable instances/big.in 100 200 0.5 0.6 1 1 1`

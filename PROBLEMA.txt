@@ -1,1 +1,55 @@
 time ./METAHEURISTIC ../../instances/paper/experiment/all/TIC10-10-10-3.in 200 10000 0.5 0.5 2 2
+
+Error : == irace == running command ''/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner' 1 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   641 1537073 0.8119 0.2518 2>&1' had status 1
+== irace == The call to targetRunner was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner 1 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   641 1537073 0.8119 0.2518
+== irace == The output was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner: line 45:  5214 Segmentation fault      (core dumped) $EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} > $STDOUT 2> $STDERR
+Seg Mar 27 18:51:30 UTC 2017: error: c1-5.stdout: No such file or directory
+== irace == This is not a bug in irace, but means that something failed when running the command(s) above or they were terminated before completion. Try to run the command(s) above from the execution directory '/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/output' to investigate the issue.
+ Error : == irace == running command ''/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner' 2 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   273 982741 0.9274 0.4958 2>&1' had status 1
+== irace == The call to targetRunner was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner 2 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   273 982741 0.9274 0.4958
+== irace == The output was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner: line 45:  5222 Segmentation fault      (core dumped) $EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} > $STDOUT 2> $STDERR
+Seg Mar 27 18:51:21 UTC 2017: error: c2-5.stdout: No such file or directory
+== irace == This is not a bug in irace, but means that something failed when running the command(s) above or they were terminated before completion. Try to run the command(s) above from the execution directory '/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/output' to investigate the issue.
+ Error : == irace == running command ''/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner' 3 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   234 1643299 0.9066 0.3652 2>&1' had status 1
+== irace == The call to targetRunner was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner 3 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   234 1643299 0.9066 0.3652
+== irace == The output was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner: line 45:  5229 Segmentation fault      (core dumped) $EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} > $STDOUT 2> $STDERR
+Seg Mar 27 18:51:34 UTC 2017: error: c3-5.stdout: No such file or directory
+== irace == This is not a bug in irace, but means that something failed when running the command(s) above or they were terminated before completion. Try to run the command(s) above from the execution directory '/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/output' to investigate the issue.
+ Error : == irace == running command ''/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner' 4 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   493 604260 0.799 0.9913 2>&1' had status 1
+== irace == The call to targetRunner was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner 4 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   493 604260 0.799 0.9913
+== irace == The output was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner: line 45:  5217 Segmentation fault      (core dumped) $EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} > $STDOUT 2> $STDERR
+Seg Mar 27 18:51:28 UTC 2017: error: c4-5.stdout: No such file or directory
+== irace == This is not a bug in irace, but means that something failed when running the command(s) above or they were terminated before completion. Try to run the command(s) above from the execution directory '/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/output' to investigate the issue.
+ Error : == irace == running command ''/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner' 6 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   362 1622166 0.4828 0.0141 2>&1' had status 1
+== irace == The call to targetRunner was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner 6 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   362 1622166 0.4828 0.0141
+== irace == The output was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner: line 45:  5228 Segmentation fault      (core dumped) $EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} > $STDOUT 2> $STDERR
+Seg Mar 27 18:51:35 UTC 2017: error: c6-5.stdout: No such file or directory
+== irace == This is not a bug in irace, but means that something failed when running the command(s) above or they were terminated before completion. Try to run the command(s) above from the execution directory '/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/output' to investigate the issue.
+ Error : == irace == running command ''/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner' 7 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   996 1968760 0.8674 0.5383 2>&1' had status 1
+== irace == The call to targetRunner was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner 7 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   996 1968760 0.8674 0.5383
+== irace == The output was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner: line 45:  5227 Segmentation fault      (core dumped) $EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} > $STDOUT 2> $STDERR
+Seg Mar 27 18:52:21 UTC 2017: error: c7-5.stdout: No such file or directory
+== irace == This is not a bug in irace, but means that something failed when running the command(s) above or they were terminated before completion. Try to run the command(s) above from the execution directory '/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/output' to investigate the issue.
+ Error : == irace == running command ''/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner' 8 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   849 937837 0.1806 0.2152 2>&1' had status 1
+== irace == The call to targetRunner was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner 8 5 1768961884 /home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/Instances//TIC16-20-20-4.in   849 937837 0.1806 0.2152
+== irace == The output was:
+/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/target-runner: line 45:  5226 Segmentation fault      (core dumped) $EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} > $STDOUT 2> $STDERR
+Seg Mar 27 18:51:50 UTC 2017: error: c8-5.stdout: No such file or directory
+== irace == This is not a bug in irace, but means that something failed when running the command(s) above or they were terminated before completion. Try to run the command(s) above from the execution directory '/home/jeansilva/TSP-WITH-RIDESHARING-AND-QUOTA/tuning/output' to investigate the issue.
+Error: == irace == A child process triggered a fatal error
+In addition: Warning message:
+In parallel::mclapply(experiments, exec.target.runner, mc.preschedule = !scenario$loadBalancing,  :
+  7 function calls resulted in an error
