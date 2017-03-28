@@ -16,7 +16,15 @@ That algorithm uses gurobi solver. The math model was implemented here.
 
 ### 2. Heuristic
 	
-This algorithm uses LKH 2.0.7 by Helsgaun, a Lin-Kernighan Traveling Salesman Heuristic implementation, to obtain a route R. Then the gurobi solver is used to get the best embark configuration for R.
+First we get a semi greedy route and then we pass it to the Lin-Kernighan Traveling Salesman Heuristic implementation (LKH 2.0.7 by Helsgauns is used in this project), to obtain a route R, only for simetric instances, and for assimetric instances we use 2-Opt local search. Then the gurobi solver is used to get the best embark configuration for R.
+
+#### 2.1 How to execute
+
+`./HEURISTIC path/to/instance instance_type`
+
+The instance type is 1 if the instance is simetric and 2 if assimetric. For example
+
+`./HEURISTIC instances/big.in 1`
 
 ### 3. Metaheuristics
 
@@ -60,4 +68,4 @@ The genetic and memectic algorithms are in the folder metaheuristics. There we h
 	
 	8.2 - 2 to ASSSIMETRIC
 	
-Example: `./executable instances/big.in 100 200 0.5 0.6 1 1 1`
+Example: `./METAHEURISTIC instances/big.in 100 200 0.5 0.6 1 1 1`

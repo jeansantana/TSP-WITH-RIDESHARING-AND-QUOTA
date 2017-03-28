@@ -24,14 +24,15 @@ int E[1000]; // Embarking vertice (postion) and disembarkation (list content)
 int min_bonus; // minimum bonus quota
 int bonus[1000]; // bonus list
 int start = 0; // start vertex
+int instanceType = 1;
 
 // storage
 vi costs;
 vi times;
 vi lowerbds;
 
-const string LKH_PATH = "../commons/LKH-2.0.7/";
-const string LK_FILES_PATH = "../commons/LK_FILES/";
+const string LKH_PATH = "../../commons/LKH-2.0.7/";
+const string LK_FILES_PATH = "../../commons/LK_FILES/";
 
 GRBEnv env = GRBEnv();
 GRBModel model = GRBModel(env);
@@ -47,18 +48,29 @@ int main(int argc, char const *argv[]) {
 	// reading file
 	string filename = fileHelper.getFileNameFromPath( string(argv[1]) );
 
+	stringstream sst;
+    sst << argv[2];
+    sst >> instanceType; sst.clear();
+
 	int n, p, r;
 
 	cin >> n >> p >> r;
 
+	d = vvd(n, vd(n, 0.0));
 	FOR(i, n) {
-		d.pb(vd());
+		// d.pb(vd());
 		FOR(j, n) {
-			int aux;
-			cin >> aux;
-			d[i].pb(aux);
+			cin >> d[i][j];
 		}
 	}
+
+	/*FOR(i, n) {
+		// d.pb(vd());
+		FOR(j, n) {
+			cout << d[i][j] << " ";
+		}
+		cout << endl;
+	}*/
 
 	FOR(i, p) {
 		double a; 
@@ -121,6 +133,13 @@ void print_vii(vii v) {
 	cout << endl;
 }
 
+void printVi(vi v) {
+	for (int i = 0; i < v.size(); ++i) {
+		cout << v[i] << " ";
+	}
+	cout << endl;
+}
+
 // return the positions of the chosen city
 int roullete(vii B) {
 	
@@ -168,6 +187,42 @@ vi semiGreedyRoute(vii B, int bonusTarget) {
 	return route;
 }
 
+vi twoOpt(vi route, int i, int k) {
+	/*cout << "i = " << i << " k =" << k << endl;
+    printVi(route);*/
+    reverse(route.begin() + i, route.begin() + k + 1);
+    /*printVi(route);
+    cout << "-------\n";*/
+    return route;
+}
+
+double getTSPCost(vi route) {
+	double cost = 0.0;
+	for (int i = 0; i < route.size() - 1; ++i) {
+		cost+= d[route[i]][route[i + 1]];
+	}
+	return cost + d[route.back()][route[0]];
+}
+
+vi localSearch2Opt(vi route) {
+	vi best = route;
+    for (int i = 1; i < route.size(); ++i) {
+        for (int k = i + 1; k < route.size(); ++k) {
+            vi candidate = twoOpt(best, i, k);
+            /*cout << (bool) (candidate == best) << endl;
+            printVi(candidate);
+            cout << "candidate: " << getTSPCost(candidate) << endl;
+            cout << "best: " << getTSPCost(best) << endl;
+            printVi(best);
+            cout << "-------------\n\n\n";*/
+            if (getTSPCost(candidate) < getTSPCost(best)) {
+                best = candidate;
+            }
+        }
+    }
+    return best;
+}
+
 void heuristic(string filename, int n, int p, int r) {
 
 	try {
@@ -204,7 +259,7 @@ void heuristic(string filename, int n, int p, int r) {
 		// Lin–Kernighan heuristic for get a good route to optimize the boarding
 
 		// Vertices greedy selection to build path
-
+		// Get the first route
 		vi gvertices;
 		//gvertices.pb(0);
 
@@ -242,8 +297,14 @@ void heuristic(string filename, int n, int p, int r) {
 		}
 		cout << "\n";*/
 
-		LKHParser parser(LKH_PATH, LK_FILES_PATH, gvertices, d, filename, string("TSP"));
-    	vi path = parser.LKHSolution();
+		// improve the route by using a local search
+		vi path;
+		if (instanceType != 2) {
+			LKHParser parser(LKH_PATH, LK_FILES_PATH, gvertices, d, filename, string("TSP"));
+    		path = parser.LKHSolution();
+    	} else {
+    		path = localSearch2Opt(gvertices);
+    	}
 
 		/*cout << "LK ROUTE: " << endl;
 		FOR (i, path.size()) {
@@ -403,10 +464,10 @@ void heuristic(string filename, int n, int p, int r) {
 	        }
 	    }
     	
-    	FOR(i, path.size()) {
+    	/*FOR(i, path.size()) {
     		cout << emb[i] << " ";
     	}
-    	cout << endl;
+    	cout << endl;*/
 
     	cout << "Cost: " << model.get(GRB_DoubleAttr_ObjVal) << endl;
 
@@ -414,7 +475,7 @@ void heuristic(string filename, int n, int p, int r) {
 		cout << "Lower Bound: " << model.get(GRB_DoubleAttr_ObjBound) << endl;
 
 		// cout << "Time: " << model.get(GRB_DoubleAttr_Runtime) << endl;
-		printf("Time: %.2f\n", model.get(GRB_DoubleAttr_Runtime));
+		// printf("Time: %.2f\n", model.get(GRB_DoubleAttr_Runtime));
 
 	} catch (GRBException e) {
     	cout << "Error code = " << e.getErrorCode() << endl;

@@ -195,7 +195,7 @@ int main(int argc, char const *argv[]) {
 
     // não é um parâmetro para o iRace
     /*sst << argv[6];*/
-    int rodadas = NUM_RODADAS; //sst >> rodadas; sst.clear();
+    // int rodadas = NUM_RODADAS; //sst >> rodadas; sst.clear();
 
     // set the singleton Shared
     Shared * shared = Shared::getInstance();
