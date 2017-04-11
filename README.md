@@ -62,6 +62,7 @@ The genetic and memectic algorithms are in the folder metaheuristics. There we h
 	7.2 - 2 to use the SCX operator
 
 	7.3 - 3 to user the SCX based operator
+	
 8. Instance Type
 	
 	8.1 - 1 to SIMETRIC

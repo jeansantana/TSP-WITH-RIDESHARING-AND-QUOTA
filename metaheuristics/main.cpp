@@ -237,7 +237,7 @@ int main(int argc, char const *argv[]) {
 
     GeneticAlgorithm genetic(populationSize, mutationRate, numEvaluates, mutationRate);
     pair<Solution, Chromosome> sol = genetic.run();
-    cout << sol.first.getCost() << endl;
+    cout << sol.first.getCost() << " " << sol.first.getQuota() << endl;
 
     /*vi route({0, 3, 1, 4, 9, 7, 2, 5});
     vi embark({0, 0, 1, 0, 0, 0, 0, 0});

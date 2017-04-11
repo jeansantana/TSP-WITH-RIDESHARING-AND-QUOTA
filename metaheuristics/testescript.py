@@ -1,4 +1,5 @@
-from subprocess import check_output
+from subprocess import check_output, call
+import os
 import sys
 import time
 import numpy as np
@@ -75,16 +76,22 @@ if ( len(sys.argv) == 5 ):
         for i in instances:
             # Preparing the cmd to run the instance
             print ('setting up instance ' + i + ' ...')
-            cmd = []
-            cmd.append('./' + EXEC_PATH)
-            cmd.append(INSTS_PATH + i)
+            # cmd = []
+            # cmd.append(EXEC_PATH)
+            # cmd.append(INSTS_PATH + i)
+            # # the parameters 
+            # cmd.append('100 200 0.5 0.6 1 1 1')
+            # print cmd
+            cmd = EXEC_PATH + ' ' + INSTS_PATH + str(i) + ' ' + '100 200 0.5 0.6 1 1 1';
             
             # Instance format is filename.in, so that why is len(i) - 3
             res_filename = i[0:len(i)-3]
             # create folder to hold the files for each of #RUNS execution
             message = 'Creating folder ' + SAVE_PATH + res_filename
             print message
-            check_output(['mkdir', SAVE_PATH + res_filename])
+            
+            if not os.path.isdir(SAVE_PATH + res_filename):
+                call(['mkdir', SAVE_PATH + res_filename])
 
             # summary = [['custo', 'tempo']]
             summary = []
@@ -95,21 +102,25 @@ if ( len(sys.argv) == 5 ):
                 # time init
                 start_time = time.time()
                 # excution #j
-                out = check_output(cmd)
+                # print cmd
+                out = check_output(cmd, shell=True)
+                # print out
                 # finish time
                 process_time = time.time() - start_time
-                out+= '\nProcess Time: ' + format(process_time, '.2f') + '\n';
-
+                # out+= '\nProcess Time: ' + format(process_time, '.2f') + '\n';
+                
                 #stroring the number of times that each solutions was reached
-                cost = out[out.find('Cost: ') + len('Cost: '):out.find('\nLower')]
-                _cost = float(cost)
-                if (Nsol.get(_cost, False)):
+                scost, squota = out.split(' ')
+                
+                cost = float(scost)
+                quota = float(squota)
+
+                if (Nsol.get(cost, False)):
                     # print "aqui"
-                    Nsol[_cost] = Nsol[_cost] + 1
+                    Nsol[cost] = Nsol[cost] + 1
                 else:
                     # print "aqui2"
-                    Nsol[_cost] = 1
-                
+                    Nsol[cost] = 1
                 # store the information for summary file  
                 summary.append( [ cost, format(process_time, '.2f') ] )
                 print ('creating output file...')
@@ -120,11 +131,17 @@ if ( len(sys.argv) == 5 ):
             createCSV(summary, SAVE_PATH, res_filename)
             Nsol = {}
 
-        # creating the all file
-        resume_arr = np.array(alldata)
-        names = ['best cost', 'Nsol', 'worst cost', 'avg cost', 'median cost', 'avg time']
-        dataframe = pd.DataFrame(resume_arr, index=allinstances, columns=names)
-        dataframe.to_csv(SAVE_PATH + 'results' + '.csv', index=True, header=True, sep=',')
+            # creating the all file
+            resume_arr = np.array(alldata)
+            names = ['best cost', 'Nsol', 'worst cost', 'avg cost', 'median cost', 'avg time']
+            dataframe = pd.DataFrame(resume_arr, index=allinstances, columns=names)
+            dataframe.to_csv(SAVE_PATH + 'results' + '.csv', index=True, header=True, sep=',')
+
+        # # creating the all file
+        # resume_arr = np.array(alldata)
+        # names = ['best cost', 'Nsol', 'worst cost', 'avg cost', 'median cost', 'avg time']
+        # dataframe = pd.DataFrame(resume_arr, index=allinstances, columns=names)
+        # dataframe.to_csv(SAVE_PATH + 'results' + '.csv', index=True, header=True, sep=',')
 
         
 
@@ -141,4 +158,5 @@ else:
     message+= '\t2. INSTS_PATH - The instances directory path\n'
     message+= '\t3. SAVE_PATH - The solutions directory path\n'
     message+= '\t4. RUNS - How many times this program will run\n'
+    message+= '\n\tFor example: $ python testescript.py build/METAHEURISTIC ../trainning/ ~/Desktop/ 30\n'
     print (message)
