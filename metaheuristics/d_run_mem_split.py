@@ -66,10 +66,10 @@ if ( len(sys.argv) == 5 ):
     SAVE_PATH = sys.argv[3]
     RUNS = sys.argv[4]
 
-	# Memetic + split (Simetric)
-    PARAMS = '915 1870220 0.1306 0.8872 2 1 1'
-	# Memetic + split (Assimetric)
-	# PARAMS = '915 1870220 0.1306 0.8872 2 1 2'
+    # Memetic + split (Simetric)
+    # PARAMS = '915 1870220 0.1306 0.8872 2 1 1'
+    # Memetic + split (Assimetric)
+    PARAMS = '915 1870220 0.1306 0.8872 2 1 2'
     
     try:
         # # cleanning the directory

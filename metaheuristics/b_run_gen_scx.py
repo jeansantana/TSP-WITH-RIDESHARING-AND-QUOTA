@@ -66,10 +66,10 @@ if ( len(sys.argv) == 5 ):
     SAVE_PATH = sys.argv[3]
     RUNS = sys.argv[4]
 
-	# Genetic + SCX (Simetric)
-    PARAMS = '687 1870220 0.6984 0.803 1 2 1'
-	# Genetic + SCX (Assimetric)
-	# PARAMS = '687 1870220 0.6984 0.803 1 2 2'
+    # Genetic + SCX (Simetric)
+    # PARAMS = '687 1870220 0.6984 0.803 1 2 1'
+    # Genetic + SCX (Assimetric)
+    PARAMS = '687 1870220 0.6984 0.803 1 2 2'
     
     try:
         # # cleanning the directory
