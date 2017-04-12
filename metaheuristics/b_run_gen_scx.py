@@ -67,7 +67,7 @@ if ( len(sys.argv) == 5 ):
     RUNS = sys.argv[4]
 
 	# Genetic + SCX (Simetric)
-	PARAMS = '687 1870220 0.6984 0.803 1 2 1'
+    PARAMS = '687 1870220 0.6984 0.803 1 2 1'
 	# Genetic + SCX (Assimetric)
 	# PARAMS = '687 1870220 0.6984 0.803 1 2 2'
     

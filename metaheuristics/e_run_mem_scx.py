@@ -67,7 +67,7 @@ if ( len(sys.argv) == 5 ):
     RUNS = sys.argv[4]
 
 	# Memetic + SCX (Simetric)
-	PARAMS = '828 1870220 0.1438 0.9218 2 2 1'
+    PARAMS = '828 1870220 0.1438 0.9218 2 2 1'
 	# Memetic + SCX (Assimetric)
 	# PARAMS = '828 1870220 0.1438 0.9218 2 2 2'
     

@@ -67,7 +67,7 @@ if ( len(sys.argv) == 5 ):
     RUNS = sys.argv[4]
 
 	# Genetic + split (Simetric)
-	PARAMS = '746 1870220 0.7221 0.3117 1 1 1'
+    PARAMS = '746 1870220 0.7221 0.3117 1 1 1'
 	# Genetic + split (Assimetric)
 	#PARAMS = '746 1870220 0.7221 0.3117 1 1 2'
     
