@@ -113,6 +113,10 @@ if ( len(sys.argv) == 5 ):
                 # excution #j
                 # print cmd
                 out = check_output(cmd, shell=True)
+                # print exec out 
+                # f = open(SAVE_PATH + res_filename + '/' + res_filename + '_' + str(j) + '.cout', 'w')
+                # f.write(out)
+                # f.close()
                 # print out
                 # finish time
                 process_time = time.time() - start_time

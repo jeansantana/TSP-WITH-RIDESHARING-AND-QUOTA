@@ -244,7 +244,6 @@ pair<Solution, Chromosome> GeneticAlgorithm::run() {
     //cout << population.size() << endl;
 
     while (!stopCriteria()) {
-        cout << "VAI SE FODER\n";
         FOR (i, numRecombinations) {
             // that includes the mutation
             recombination();
