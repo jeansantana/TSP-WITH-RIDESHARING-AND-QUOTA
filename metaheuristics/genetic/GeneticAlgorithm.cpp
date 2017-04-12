@@ -270,8 +270,8 @@ void GeneticAlgorithm::localSearch(Chromosome &chromosome) {
 }
 
 void GeneticAlgorithm::linKernighan(Chromosome &chromosome) {
-    string LKH_PATH = "../../commons/LKH-2.0.7/";
-    string LK_FILES_PATH = "../../commons/LK_FILES/";
+    string LKH_PATH = "../commons/LKH-2.0.7/";
+    string LK_FILES_PATH = "../commons/LK_FILES/";
 
     Shared *shared = Shared::getInstance();
     unsigned int time = chrono::system_clock::now().time_since_epoch().count();
