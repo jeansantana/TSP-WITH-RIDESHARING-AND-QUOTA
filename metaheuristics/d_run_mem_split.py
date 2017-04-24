@@ -101,6 +101,9 @@ if ( len(sys.argv) == 5 ):
             
             if not os.path.isdir(SAVE_PATH + res_filename):
                 call(['mkdir', SAVE_PATH + res_filename])
+            elif os.path.exists(SAVE_PATH + res_filename + '/' + res_filename + '.csv'):
+                print 'Already done! Pass!'
+                continue
 
             # summary = [['custo', 'tempo']]
             summary = []
