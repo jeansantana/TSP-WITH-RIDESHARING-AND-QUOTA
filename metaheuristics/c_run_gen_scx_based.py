@@ -66,10 +66,10 @@ if ( len(sys.argv) == 5 ):
     SAVE_PATH = sys.argv[3]
     RUNS = sys.argv[4]
 
-	# Genetic + SCX Based (Simetric)
-    PARAMS = '872 1870220 0.4889 0.9618 1 3 1'
-	# Genetic + SCX Based (Assimetric)
-	# PARAMS = '872 1870220 0.4889 0.9618 1 3 2'
+    # Genetic + SCX Based (Simetric)
+    # PARAMS = '872 1870220 0.4889 0.9618 1 3 1'
+    # Genetic + SCX Based (Assimetric)
+    PARAMS = '872 1870220 0.4889 0.9618 1 3 2'
     
     try:
         # # cleanning the directory
@@ -101,6 +101,9 @@ if ( len(sys.argv) == 5 ):
             
             if not os.path.isdir(SAVE_PATH + res_filename):
                 call(['mkdir', SAVE_PATH + res_filename])
+            elif os.path.exists(SAVE_PATH + res_filename + '/' + res_filename + '.csv'):
+                print 'Already done! Pass!'
+                continue
 
             # summary = [['custo', 'tempo']]
             summary = []

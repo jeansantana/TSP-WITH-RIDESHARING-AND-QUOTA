@@ -66,10 +66,10 @@ if ( len(sys.argv) == 5 ):
     SAVE_PATH = sys.argv[3]
     RUNS = sys.argv[4]
 
-	# Genetic + split (Simetric)
-    PARAMS = '746 1870220 0.7221 0.3117 1 1 1'
-	# Genetic + split (Assimetric)
-	#PARAMS = '746 1870220 0.7221 0.3117 1 1 2'
+    # Genetic + split (Simetric)
+    # PARAMS = '746 1870220 0.7221 0.3117 1 1 1'
+    # Genetic + split (Assimetric)
+    PARAMS = '746 1870220 0.7221 0.3117 1 1 2'
     
     try:
         # # cleanning the directory
@@ -101,6 +101,9 @@ if ( len(sys.argv) == 5 ):
             
             if not os.path.isdir(SAVE_PATH + res_filename):
                 call(['mkdir', SAVE_PATH + res_filename])
+            elif os.path.exists(SAVE_PATH + res_filename + '/' + res_filename + '.csv'):
+                print 'Already done! Pass!'
+                continue
 
             # summary = [['custo', 'tempo']]
             summary = []
@@ -113,6 +116,10 @@ if ( len(sys.argv) == 5 ):
                 # excution #j
                 # print cmd
                 out = check_output(cmd, shell=True)
+                # print exec out 
+                # f = open(SAVE_PATH + res_filename + '/' + res_filename + '_' + str(j) + '.cout', 'w')
+                # f.write(out)
+                # f.close()
                 # print out
                 # finish time
                 process_time = time.time() - start_time

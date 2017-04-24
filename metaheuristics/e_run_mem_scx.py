@@ -66,10 +66,10 @@ if ( len(sys.argv) == 5 ):
     SAVE_PATH = sys.argv[3]
     RUNS = sys.argv[4]
 
-	# Memetic + SCX (Simetric)
-    PARAMS = '828 1870220 0.1438 0.9218 2 2 1'
-	# Memetic + SCX (Assimetric)
-	# PARAMS = '828 1870220 0.1438 0.9218 2 2 2'
+    # Memetic + SCX (Simetric)
+    # PARAMS = '828 1870220 0.1438 0.9218 2 2 1'
+    # Memetic + SCX (Assimetric)
+    PARAMS = '828 1870220 0.1438 0.9218 2 2 2'
     
     try:
         # # cleanning the directory
@@ -101,6 +101,9 @@ if ( len(sys.argv) == 5 ):
             
             if not os.path.isdir(SAVE_PATH + res_filename):
                 call(['mkdir', SAVE_PATH + res_filename])
+            elif os.path.exists(SAVE_PATH + res_filename + '/' + res_filename + '.csv'):
+                print 'Already done! Pass!'
+                continue
 
             # summary = [['custo', 'tempo']]
             summary = []
