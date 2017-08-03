@@ -163,3 +163,4 @@ metaheuristics/build
 codemeta/
 metaheuristics/cmake-build-debug/
 tsp-pq-irace/
+metaheuristics/results

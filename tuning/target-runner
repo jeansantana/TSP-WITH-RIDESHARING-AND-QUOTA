@@ -16,8 +16,9 @@
 # This script should print one numerical value: the cost that must be minimized.
 # Exit with 0 if no error, with 1 in case of error
 ###############################################################################
-EXE=../../metaheuristics/build/METAHEURISTIC
-FIXED_PARAMS="1 1 1"
+EXE=../../heuristic/build/GRASP.run
+# FIXED_PARAMS="1 1 1"
+FIXED_PARAMS="1"
 
 CONFIG_ID=$1
 INSTANCE_ID=$2
@@ -42,7 +43,8 @@ fi
 # (If you wish to ignore segmentation faults you can use '{}' around
 # the command.)
 
-$EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} 1> $STDOUT 2> $STDERR
+# $EXE $INSTANCE ${CONFIG_PARAMS} ${FIXED_PARAMS} 1> $STDOUT 2> $STDERR
+$EXE $INSTANCE ${FIXED_PARAMS} ${CONFIG_PARAMS} 1> $STDOUT 2> $STDERR
 
 error() {
     echo "`TZ=UTC date`: error: $@"

@@ -1,0 +1,4 @@
+Cost: 602.983
+Lower Bound: 602.983
+
+Process Time: 59.51

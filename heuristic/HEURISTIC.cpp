@@ -31,8 +31,8 @@ vi costs;
 vi times;
 vi lowerbds;
 
-const string LKH_PATH = "../../commons/LKH-2.0.7/";
-const string LK_FILES_PATH = "../../commons/LK_FILES/";
+const string LKH_PATH = "../commons/LKH-2.0.7/";
+const string LK_FILES_PATH = "../commons/LK_FILES/";
 
 GRBEnv env = GRBEnv();
 GRBModel model = GRBModel(env);
@@ -62,7 +62,7 @@ int main(int argc, char const *argv[]) {
 		FOR(j, n) {
 			cin >> d[i][j];
 		}
-	}
+	}	
 
 	/*FOR(i, n) {
 		// d.pb(vd());
@@ -95,7 +95,7 @@ int main(int argc, char const *argv[]) {
 	// start city
 	bonus[start] = 0;
 	
-	heuristic(filename, n, p, r);
+	heuristic(filename, n, p, r);	
 	
 	return 0;
 }
@@ -109,8 +109,8 @@ int _compare(const void* a, const void* b) {
 }
 
 bool bonusCmp(ii b1, ii b2) {
-	// return b1.second >= b2.second;
-	return b1.second <= b2.second;
+	return b1.second >= b2.second;
+	// return b1.second <= b2.second;
 
 }
 
@@ -184,6 +184,28 @@ vi semiGreedyRoute(vii B, int bonusTarget) {
 		removeCity(B, B[chosenOne]);
 	}
 
+	return route;
+}
+
+vi naiveRoute(vii B, int bonusTarget) {
+	vi route;
+	route.pb(0);
+	int currBonus = 0;
+
+	for(int i = 0; i < B.size(); i++) {
+		
+		if (currBonus >= bonusTarget) {
+			break;
+		}
+
+		route.pb(B[i].first);
+		//print_vii(B);
+		currBonus+= B[i].second;
+		// removeCity(B, B[chosenOne]);
+		
+	}
+	// cout << "ROUTE:: \n";
+	printVi(route);
 	return route;
 }
 
@@ -276,8 +298,7 @@ void heuristic(string filename, int n, int p, int r) {
 		sort(B.begin(), B.end(), bonusCmp);
 		//print_vii(B);
 		//cout << "Start here: \n";
-		gvertices = semiGreedyRoute(B, min_bonus);
-
+		gvertices = naiveRoute(B, min_bonus);		
 
 		/*int totalBonus = 0;
 		FOR(i, B.size()) {
@@ -302,7 +323,7 @@ void heuristic(string filename, int n, int p, int r) {
 		if (instanceType != 2) {
 			LKHParser parser(LKH_PATH, LK_FILES_PATH, gvertices, d, filename, string("TSP"));
     		path = parser.LKHSolution();
-    	} else {
+    	} else {			
     		path = localSearch2Opt(gvertices);
     	}
 

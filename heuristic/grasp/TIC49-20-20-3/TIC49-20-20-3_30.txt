@@ -1,0 +1,4 @@
+Cost: 402.75
+Lower Bound: 402.75
+
+Process Time: 7.04

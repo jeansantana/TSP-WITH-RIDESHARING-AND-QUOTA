@@ -1,0 +1,4 @@
+Cost: 548
+Lower Bound: 548
+
+Process Time: 21.94
