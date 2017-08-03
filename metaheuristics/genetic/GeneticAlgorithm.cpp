@@ -269,8 +269,8 @@ void GeneticAlgorithm::localSearch(Chromosome &chromosome) {
 }
 
 void GeneticAlgorithm::linKernighan(Chromosome &chromosome) {
-    string LKH_PATH = "../../commons/LKH-2.0.7/";
-    string LK_FILES_PATH = "../../commons/LK_FILES/";
+    string LKH_PATH = "../commons/LKH-2.0.7/";
+    string LK_FILES_PATH = "../commons/LK_FILES/";
 
     Shared *shared = Shared::getInstance();
     unsigned int time = chrono::system_clock::now().time_since_epoch().count();
@@ -284,7 +284,7 @@ void GeneticAlgorithm::linKernighan(Chromosome &chromosome) {
 }
 
 void GeneticAlgorithm::localSearch2Opt(Chromosome &chromosome) {
-    for (int i = 0; i < chromosome.getRoute().size(); ++i) {
+    for (int i = 1; i < chromosome.getRoute().size(); ++i) {
         for (int k = i + 1; k < chromosome.getRoute().size(); ++k) {
             Chromosome candidate = twoOpt(chromosome, i, k);
             if (candidate.fitness() < chromosome.fitness()) {
@@ -297,8 +297,8 @@ void GeneticAlgorithm::localSearch2Opt(Chromosome &chromosome) {
 Chromosome GeneticAlgorithm::twoOpt(Chromosome chromosome, int i, int k) {
     vector<int> route = chromosome.getRoute();
     vector<int> boarding = chromosome.getBoarding();
-    reverse(route.begin() + i, route.begin() + k);
-    reverse(boarding.begin() + i, boarding.begin() + k);
+    reverse(route.begin() + i, route.begin() + k + 1);
+    reverse(boarding.begin() + i, boarding.begin() + k + 1);
 
     chromosome.setRoute(route);
     chromosome.setBoarding(boarding);

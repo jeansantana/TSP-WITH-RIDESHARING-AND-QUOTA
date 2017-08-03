@@ -1,0 +1,184 @@
+*******************************************************************************
+* irace: An implementation in R of Iterated Race
+* Version: 2.1.1662
+* Copyright (C) 2010-2016
+* Manuel Lopez-Ibanez     <manuel.lopez-ibanez@manchester.ac.uk>
+* Jeremie Dubois-Lacoste  <jeremie.dubois-lacoste@ulb.ac.be>
+* Leslie Perez Caceres    <leslie.perez.caceres@ulb.ac.be>
+*
+* This is free software, and you are welcome to redistribute it under certain
+* conditions.  See the GNU General Public License for details. There is NO
+* WARRANTY; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*
+* irace builds upon previous code from the race package:
+*
+* race: Racing methods for the selection of the best
+* Copyright (C) 2003 Mauro Birattari
+*******************************************************************************
+	installed at: /home/jeansilva/R/x86_64-pc-linux-gnu-library/3.0/irace
+Warning: A default scenario file './scenario.txt' has been found and will be read
+# 2017-03-30 10:07:09 BRT: Elitist race
+# Elitist new instances: 1
+# Elitist limit: 2
+
+# 2017-03-30 10:07:09 BRT: Initialization
+# nbIterations: 4
+# minNbSurvival: 4
+# nbParameters: 4
+# seed: 1576148027
+# confidence level: 0.95
+# budget: 200
+# mu: 5
+# deterministic: FALSE
+
+# 2017-03-30 10:07:09 BRT: Iteration 1 of 4
+# experimentsUsedSoFar: 0
+# remainingBudget: 200
+# currentBudget: 50
+# nbConfigurations: 8
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          1|          8|          4|    1047.170000|          8|00:02:49|   NA|  NA|    NA|
+|x|          2|          8|          1|    1482.500000|         16|00:05:59|+0.48|0.74|0.5786|
+|x|          3|          8|          1|    998.3333333|         24|00:03:22|+0.47|0.65|0.5114|
+|x|          4|          8|          1|    924.8750000|         32|00:02:36|+0.38|0.54|0.5257|
+|-|          5|          3|          2|    943.6666000|         40|00:07:41|-0.05|0.16|0.6970|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:           2    mean value:     943.6666000
+Description of the best configuration:
+  .ID. populacao numavaliacoes taxacuzamento taxamutcao .PARENT.
+2    2       712        543383        0.5197     0.9144       NA
+
+
+# 2017-03-30 10:29:37 BRT: Elite configurations:
+  populacao numavaliacoes taxacuzamento taxamutcao
+2       712        543383        0.5197     0.9144
+1       355        263876        0.8481     0.9847
+4       611        531412        0.3885     0.4146
+# 2017-03-30 10:29:37 BRT: Iteration 2 of 4
+# experimentsUsedSoFar: 40
+# remainingBudget: 160
+# currentBudget: 53
+# nbConfigurations: 9
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          6|          9|          9|    919.8330000|          9|00:03:31|   NA|  NA|    NA|
+|x|          1|          9|         10|    1004.416500|         15|00:02:06|+0.46|0.73|0.3672|
+|x|          2|          9|         10|    1130.001000|         21|00:03:49|+0.53|0.69|0.3378|
+|x|          3|          9|         10|    854.7924250|         27|00:02:36|+0.57|0.67|0.3433|
+|!|          5|          5|         10|    885.8999400|         33|00:09:57|+0.19|0.35|0.6563|
+|-|          4|          3|         10|    817.9999500|         38|00:01:03|-0.07|0.11|0.6672|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          10    mean value:     817.9999500
+Description of the best configuration:
+   .ID. populacao numavaliacoes taxacuzamento taxamutcao .PARENT.
+10   10       789        601981         0.618     0.8473        1
+
+
+# 2017-03-30 10:52:43 BRT: Elite configurations:
+   populacao numavaliacoes taxacuzamento taxamutcao
+10       789        601981        0.6180     0.8473
+9        500        149521        0.2314     0.9705
+2        712        543383        0.5197     0.9144
+# 2017-03-30 10:52:43 BRT: Iteration 3 of 4
+# experimentsUsedSoFar: 78
+# remainingBudget: 122
+# currentBudget: 61
+# nbConfigurations: 9
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          7|          9|         10|    1546.000000|          9|00:04:49|   NA|  NA|    NA|
+|x|          6|          9|          9|    1296.166500|         15|00:02:09|+0.23|0.61|0.6963|
+|x|          1|          9|         10|    1184.944333|         21|00:01:49|+0.45|0.63|0.8059|
+|x|          5|          9|         10|    1141.290750|         27|00:05:30|+0.23|0.42|0.8515|
+|-|          4|          4|         10|    1008.732600|         33|00:01:49|+0.10|0.28|0.6026|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          10    mean value:     1008.732600
+Description of the best configuration:
+   .ID. populacao numavaliacoes taxacuzamento taxamutcao .PARENT.
+10   10       789        601981         0.618     0.8473        1
+
+
+# 2017-03-30 11:08:53 BRT: Elite configurations:
+   populacao numavaliacoes taxacuzamento taxamutcao
+10       789        601981        0.6180     0.8473
+2        712        543383        0.5197     0.9144
+9        500        149521        0.2314     0.9705
+19       452        250610        0.5027     0.9595
+# 2017-03-30 11:08:53 BRT: Iteration 4 of 4
+# experimentsUsedSoFar: 111
+# remainingBudget: 89
+# currentBudget: 89
+# nbConfigurations: 13
+  Markers:
+     x No test is performed.
+     - The test is performed and some configurations are discarded.
+     = The test is performed but no configuration is discarded.
+     ! The test is performed and configurations could be discarded but elite configurations are preserved.
+                                                                   
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+| |   Instance|      Alive|       Best|      Mean best| Exp so far|  W time|  rho|KenW|  Qvar|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+|x|          8|         13|         29|    832.1670000|         13|00:16:49|   NA|  NA|    NA|
+|x|          6|         13|         23|    861.0830000|         22|00:03:08|-0.13|0.43|0.9912|
+|x|          3|         13|         24|    593.8053333|         32|00:04:01|-0.04|0.30|0.9186|
+|x|          1|         13|          9|    825.5832500|         41|00:03:11|-0.01|0.24|0.9278|
+|=|          7|         13|         23|    895.9332000|         50|00:05:48|-0.01|0.20|0.9168|
+|=|          5|         13|         23|    904.3331667|         59|00:12:04|-0.06|0.12|0.9201|
+|=|          4|         13|         10|    872.8799571|         68|00:03:08|-0.02|0.13|0.9041|
+|=|          2|         13|         23|    934.5836250|         81|00:07:14|-0.00|0.12|0.8827|
++-+-----------+-----------+-----------+---------------+-----------+--------+-----+----+------+
+Best configuration:          23    mean value:     934.5836250
+Description of the best configuration:
+   .ID. populacao numavaliacoes taxacuzamento taxamutcao .PARENT.
+23   23       764        189297        0.6209     0.8028        2
+
+
+# 2017-03-30 12:04:20 BRT: Elite configurations:
+   populacao numavaliacoes taxacuzamento taxamutcao
+23       764        189297        0.6209     0.8028
+10       789        601981        0.6180     0.8473
+9        500        149521        0.2314     0.9705
+27       763        771756        0.7843     0.9416
+# 2017-03-30 12:04:20 BRT: Stopped because there is not enough budget left to race more than the minimum (4)
+# You may either increase the budget or set 'minNbSurvival' to a lower value
+# Iteration: 5
+# nbIterations: 5
+# experimentsUsedSoFar: 192
+# timeUsed: 0
+# remainingBudget: 8
+# currentBudget: 8
+# number of elites: 4
+# nbConfigurations: 4
+# Best configurations (first number is the configuration ID)
+   populacao numavaliacoes taxacuzamento taxamutcao
+23       764        189297        0.6209     0.8028
+10       789        601981        0.6180     0.8473
+9        500        149521        0.2314     0.9705
+27       763        771756        0.7843     0.9416
+# Best configurations as commandlines (first number is the configuration ID)
+23  764 189297 0.6209 0.8028
+10  789 601981 0.618 0.8473
+9   500 149521 0.2314 0.9705
+27  763 771756 0.7843 0.9416

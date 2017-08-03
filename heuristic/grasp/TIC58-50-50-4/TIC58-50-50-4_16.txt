@@ -1,0 +1,4 @@
+Cost: 502.633
+Lower Bound: 502.633
+
+Process Time: 71.34

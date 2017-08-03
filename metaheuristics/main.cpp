@@ -195,7 +195,7 @@ int main(int argc, char const *argv[]) {
 
     // não é um parâmetro para o iRace
     /*sst << argv[6];*/
-    int rodadas = NUM_RODADAS; //sst >> rodadas; sst.clear();
+    // int rodadas = NUM_RODADAS; //sst >> rodadas; sst.clear();
 
     // set the singleton Shared
     Shared * shared = Shared::getInstance();
@@ -237,7 +237,7 @@ int main(int argc, char const *argv[]) {
 
     GeneticAlgorithm genetic(populationSize, mutationRate, numEvaluates, mutationRate);
     pair<Solution, Chromosome> sol = genetic.run();
-    cout << sol.first.getCost() << endl;
+    cout << sol.first.getCost() << " " << sol.first.getQuota() << endl;
 
     /*vi route({0, 3, 1, 4, 9, 7, 2, 5});
     vi embark({0, 0, 1, 0, 0, 0, 0, 0});

@@ -1,0 +1,4 @@
+Cost: 404
+Lower Bound: 404
+
+Process Time: 20.91
